@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "venues",
+  "info": {
+    "name": "venue",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "website": {
+      "type": "string",
+      "unique": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "number": {
+      "type": "biginteger",
+      "unique": true,
+      "required": true
+    },
+    "password": {
+      "type": "password",
+      "private": true,
+      "required": true,
+      "minLength": 6
+    },
+    "gallery": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "pricing": {
+      "type": "enumeration",
+      "enum": [
+        "perperson",
+        "venuehire",
+        "minimumspend"
+      ],
+      "required": true
+    },
+    "fromprice": {
+      "type": "decimal",
+      "required": true
+    },
+    "seating": {
+      "type": "integer",
+      "required": true
+    },
+    "standing": {
+      "type": "integer",
+      "required": true
+    },
+    "venuename": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "features": {
+      "collection": "feature",
+      "via": "venue"
+    },
+    "venue_types": {
+      "collection": "venue-type",
+      "via": "venue"
+    }
+  }
+}

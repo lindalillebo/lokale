@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/venue-types",
+      "handler": "venue-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/venue-types/count",
+      "handler": "venue-type.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/venue-types/:id",
+      "handler": "venue-type.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/venue-types",
+      "handler": "venue-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/venue-types/:id",
+      "handler": "venue-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/venue-types/:id",
+      "handler": "venue-type.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

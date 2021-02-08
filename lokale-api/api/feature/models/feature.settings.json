@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "features",
+  "info": {
+    "name": "feature",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "venue": {
+      "via": "features",
+      "model": "venue"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

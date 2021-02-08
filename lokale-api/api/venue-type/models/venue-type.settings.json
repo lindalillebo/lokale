@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "venue_types",
+  "info": {
+    "name": "venue-type",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "venue": {
+      "via": "venue_types",
+      "model": "venue"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

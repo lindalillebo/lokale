@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>lokale</title>
+
+    <meta name="description" content="Booking venues online.">
+    <meta name="keywords" content="booking,venue,venues,event,events">
+    <meta name="author" content="Linda Lillebø">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link href="scss/style.scss" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/77a58f8262.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav>
+        <div>
+            <a href="index.html">
+                <img src="assets/logo-golden-tekt.svg" alt="logo-golden-tekt">
+            </a>
+        </div>
+
+        <div id="toggle">
+            <img src="assets/hamburger.svg" alt="hamburger menu">
+            <img aria-hidden="true" src="assets/cross.svg" alt="cross">
+        </div>
+
+        <ul>
+            <li>
+                <a href="add-venue.html">registrer lokale</a>
+            </li>
+            <li>
+                <a href="log-in.html"><button>logg inn</button></a>
+                <a href="log-in.html" aria-hidden="true">logg inn</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div>
+        <h2>send en booking forespørsel til .....</h2>
+    </div>
+
+    <form action="">
+        <span>Vi sender din henvendelse til ............ for ditt arrangement. De vil da svare deg på e-post med et
+            skreddersydd forslag, helt gratis uten forpliktelser. Du velger selv om du vil godta eller ikke.</span>
+
+        <h4>kontakt detaljer</h4>
+
+        <label for="name">Fullt navn *</label>
+        <input type="text" id="name" name="name" required>
+        <span class="error">Dette feltet kan ikke være tomt</span>
+
+        <label for="email">E-post adresse *</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error">Vær vennlig å skriv inn rikitg e-post adresse</span>
+
+        <label for="phone">Telefonnummer *</label>
+        <input type="tel" id="phone" name="phone" pattern="/^\d{3}[-\s\.]\d{3}[-\s\.]\d{4}$/" required>
+        <span class="error">Vær vennlig å skriv inn rikitg telefonnummer</span>
+
+        <h4>arrangement detaljer</h4>
+
+        <label for="text">Hvilket type arrangement ønsker du? *</label>
+        <select name="events" id="events" required>
+            <option value="bedriftsarrangement">Bedriftsarrangement</option>
+            <option value="bryllup">Bryllup</option>
+            <option value="dåp / navnedag / konfirmasjon">Dåp / Navnedag / Konfirmasjon</option>
+            <option value="fest">Fest</option>
+            <option value="forestilling / konsert">Forestilling / Konsert</option>
+            <option value="julebord">Julebord</option>
+            <option value="kurs / konferanse">Kurs / Konferanse</option>
+            <option value="middag / kunsj">Middag / Lunsj</option>
+            <option value="møte">Møte</option>
+            <option value="utstilling">Utstilling</option>
+        </select>
+        <span class="error">Vennligst velg et av alternativene</span>
+
+        <label for="text">Sitteplasser *</label>
+        <input type="radio" name="sitting" value="sitting" checked>
+        <label for="sitting">Sittende</label>
+        <input type="radio" name="standing" value="standing">
+        <label for="standing">Stående</label>
+
+        <label for="text">Antall gjester *</label>
+        <input type="number" name="number-guests" required>
+        <span class="error">Vennligst fyll inn antall gjester</span>
+
+        <label for="text">Dato *</label>
+        <input type="date" name="date" required>
+        <span class="error">Vennligst fyll inn dato</span>
+
+        <label for="text">Klokkeslett</label>
+        <input type="time" name="time">
+
+        <label for="text">Din estimerte utgift</label>
+        <input type="text" name="expence" placeholder="kr..">
+
+        <label for="text">Har du noen spesielle krav?</label>
+        <textarea name="message" id="enquire-venue-message" placeholder="melding.." cols="30" rows="10"></textarea>
+
+
+        <input type="submit" value="send forsespørsel">
+
+
+    </form>
+
+    <footer>
+        <div class="footer-links">
+            <a href="contact.html"><span>Kontakt oss</span></a>
+            <a href="add-venue.html"><span>Registrer ditt lokale</span></a>
+            <a href="log-in.html"><span>Logg inn</span></a>
+            <a href="venue-listing.html"><span>Se alle lokaler</span></a>
+        </div>
+        <div>
+            <span>© Copyright 2021 lokale. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

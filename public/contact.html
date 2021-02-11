@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>lokale</title>
+
+    <meta name="description" content="Booking venues online.">
+    <meta name="keywords" content="booking,venue,venues,event,events">
+    <meta name="author" content="Linda Lillebø">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link href="scss/style.scss" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/77a58f8262.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav>
+        <div>
+            <a href="index.html">
+                <img src="assets/logo-golden-tekt.svg" alt="logo-golden-tekt">
+            </a>
+        </div>
+
+        <div id="toggle">
+            <img src="assets/hamburger.svg" alt="hamburger menu">
+            <img aria-hidden="true" src="assets/cross.svg" alt="cross">
+        </div>
+
+        <ul>
+            <li>
+                <a href="add-venue.html">registrer lokale</a>
+            </li>
+            <li>
+                <a href="log-in.html"><button>logg inn</button></a>
+                <a href="log-in.html" aria-hidden="true">logg inn</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <section>
+        <div>
+            <h2>kontakt oss</h2>
+        </div>
+
+        <form action="">
+
+            <h4>Har du noen spørsmål? Send oss en melding her:</h4>
+
+            <input type="text" name="name" placeholder="ditt navn *">
+            <span class="error">Dette feltet kan ikke være tomt</span>
+
+            <input type="email" name="email" placeholder="e-post addresse *">
+            <span class="error">Vær vennlig å skriv inn rikitg e-post adresse</span>
+
+            <textarea name="message" id="message" placeholder="din melding *" cols="30" rows="10"></textarea>
+            <span class="error">Dette feltet kan ikke være tomt</span>
+
+            <input type="submit" value="send">
+
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="contact.html"><span>Kontakt oss</span></a>
+            <a href="add-venue.html"><span>Registrer ditt lokale</span></a>
+            <a href="log-in.html"><span>Logg inn</span></a>
+            <a href="venue-listing.html"><span>Se alle lokaler</span></a>
+        </div>
+        <div>
+            <span>© Copyright 2021 lokale. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -18,26 +18,25 @@
 </head>
 
 <body>
-
-	<nav>
-		<div>
+    <nav>
+		<div id="logo">
 			<a href="index.html">
 				<img src="../src/assets/logo-golden-tekt.svg" alt="logo-golden-tekt">
 			</a>
 		</div>
 
 		<div id="toggle">
-			<img src="../src/assets/hamburger.svg" alt="hamburger menu">
-			<img aria-hidden="true" src="../src/assets/cross.svg" alt="cross">
+			<img src="../src/assets/hamburger.svg" alt="hamburger menu" id="hamburger">
+			<img src="../src/assets/cross.svg" alt="cross" id="cross">
 		</div>
 
-		<ul>
+		<ul id="nav-links">
 			<li>
 				<a href="add-venue.html">registrer lokale</a>
 			</li>
 			<li>
-				<a href="log-in.html"><button>logg inn</button></a>
-				<a href="log-in.html" aria-hidden="true">logg inn</a>
+				<a href="log-in.html"></div><button>logg inn</button></a>
+				<a href="log-in.html">logg inn</a>
 			</li>
 		</ul>
 	</nav>
@@ -47,7 +46,7 @@
         <h2>din informasjon:</h2>
     </div>
 
-    <form action="">
+    <form action="" class="form-container">
         <span>Her kan du legge til eller endre bilder eller informasjon på din profil. Vil du slette ditt lokale fra
             lokale.no, kan du gjøre det nederst på siden. Har du noen spørsmål, send oss en melding <a
                 href="contact.html">her!</a></span>
@@ -86,7 +85,7 @@
         <input type="password" id="password" name="password" required>
         <span class="error">Dette feltet kan ikke være tomt</span>
 
-        <h4>informasjon om ditt lokale</h4>
+        <h4 class="padding-top">informasjon om ditt lokale</h4>
 
         <label for="text">Hvilket type arrangement kan holdes der?</label>
         <input type="checkbox" name="event1" value="bedriftsarrangement">
@@ -163,8 +162,8 @@
         <span class="error">Dette feltet kan ikke være tomt</span>
 
 
-        <input type="submit" value="slett ditt lokale">
-        <input type="submit" value="endre din profil">
+        <button type="submit" id="btn--delete">slett ditt lokale</button>
+        <button type="submit">endre din profil</button>
 
 
     </form>

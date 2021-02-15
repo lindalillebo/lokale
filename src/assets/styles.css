@@ -2,12 +2,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Quando&display=swap");
 body {
   font-family: Lato, sans serif;
+  font-weight: 300;
   color: #282219;
-  background-color: #FFFDFB;
+  background-color: #FBF6EF;
   font-size: 1em;
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 #cross {
@@ -19,7 +25,7 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2.2em;
   color: #FFFDFB;
   margin: 0;
 }
@@ -27,11 +33,11 @@ h1 {
 h2 {
   font-size: 2em;
   text-align: center;
-  margin-bottom: 50px;
+  margin: 40px 0 50px;
 }
 
 h4 {
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-top: 10px;
 }
 
@@ -40,9 +46,15 @@ a {
   color: #282219;
 }
 
+.center {
+  display: block;
+  margin: auto;
+}
+
 button {
   display: inline-block;
   background-color: #D4974C;
+  font-size: 1em;
   color: #FFFDFB;
   border: none;
   border-radius: 5px;
@@ -80,8 +92,14 @@ button:hover:after {
   height: 40px;
 }
 
+#btn-delete {
+  background-color: #FBF6EF;
+}
+
 nav {
   overflow: auto;
+  -webkit-box-shadow: 0px 2px 7px #e8e6e3;
+          box-shadow: 0px 2px 7px #e8e6e3;
 }
 
 #logo {
@@ -101,7 +119,6 @@ ul {
   display: inline-block;
   width: 100%;
   padding: 0;
-  text-align: center;
 }
 
 #nav-links {
@@ -122,20 +139,29 @@ ul {
 footer {
   background-color: #70675C;
   color: #FFFDFB;
-  text-align: center;
   height: auto;
-  padding: 5px 0 35px;
+  padding: 5px 0 20px;
 }
 
-footer a {
+footer ul {
   display: block;
+  width: 30%;
+  margin: 15px auto;
+}
+
+footer ul a {
   text-decoration: none;
   color: #FFFDFB;
   padding: 10px;
 }
 
-footer a:hover, footer a:active {
-  color: #282219;
+footer ul a:hover, footer ul a:active {
+  color: #D4974C;
+}
+
+footer span {
+  display: block;
+  text-align: center;
 }
 
 .flex {
@@ -159,11 +185,146 @@ footer a:hover, footer a:active {
   width: 90%;
 }
 
-.hero .hero__text .hero__search input {
+.hero .hero__text .hero__search input, .hero .hero__text .hero__search select {
   display: block;
   border: none;
   padding: 10px 50px;
   margin: 10px auto;
+  border: 1px solid #e8e6e3;
+  font-family: Lato, sans serif;
+  letter-spacing: 0.1em;
+}
+
+.hero .hero__text .hero__search input ::-webkit-input-placeholder, .hero .hero__text .hero__search select ::-webkit-input-placeholder {
+  float: right;
+}
+
+.hero .hero__text .hero__search input :-ms-input-placeholder, .hero .hero__text .hero__search select :-ms-input-placeholder {
+  float: right;
+}
+
+.hero .hero__text .hero__search input ::-ms-input-placeholder, .hero .hero__text .hero__search select ::-ms-input-placeholder {
+  float: right;
+}
+
+.hero .hero__text .hero__search input ::placeholder, .hero .hero__text .hero__search select ::placeholder {
+  float: right;
+}
+
+.hero .hero__text .hero__search *:focus {
+  outline: none;
+}
+
+.form-container {
+  background-color: #FFFDFB;
+  width: 90%;
+  margin: 0 auto 80px;
+  padding: 5px 0 30px;
+  -webkit-box-shadow: 0px 1px 4px #70675C;
+          box-shadow: 0px 1px 4px #70675C;
+}
+
+.form-container h4 {
+  font-size: 1em;
+  font-weight: 500;
+  text-align: center;
+  width: 90%;
+  margin: 30px auto 35px;
+  line-height: 20px;
+}
+
+.form-container h3 {
+  font-size: 1.3em;
+  width: 90%;
+  margin: 15px auto 35px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #282219;
+}
+
+.form-container p {
+  font-size: 0.9em;
+  font-weight: 500;
+  width: 90%;
+  margin: 30px auto 50px;
+  line-height: 23px;
+}
+
+.form-container input, .form-container textarea {
+  display: block;
+  padding: 10px;
+  margin: 15px auto;
+  border: 1px solid #e8e6e3;
+  width: 90%;
+  font-family: Lato, sans serif;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.form-container *:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 4px #d1cdc7;
+          box-shadow: 0 0 4px #d1cdc7;
+}
+
+.form-container ::-webkit-input-placeholder {
+  color: #bab3ab;
+  opacity: 1;
+}
+
+.form-container :-ms-input-placeholder {
+  color: #bab3ab;
+  opacity: 1;
+}
+
+.form-container ::-ms-input-placeholder {
+  color: #bab3ab;
+  opacity: 1;
+}
+
+.form-container ::placeholder {
+  color: #bab3ab;
+  opacity: 1;
+}
+
+.form-container label {
+  display: block;
+  margin: 15px auto;
+  width: 90%;
+  font-weight: 500;
+}
+
+.form-container button {
+  width: 90%;
+  display: block;
+  margin: 40px auto;
+  padding: 10px;
+}
+
+.form-container .small-text {
+  font-size: 0.8em;
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.form-container .error {
+  display: none;
+}
+
+.form-container a:hover {
+  color: #D4974C;
+}
+
+.padding-top {
+  padding-top: 40px;
+}
+
+.margin-top {
+  margin-top: 70px;
+}
+
+.red {
+  color: #b10909;
 }
 
 .slider__img {
@@ -172,7 +333,7 @@ footer a:hover, footer a:active {
 
 .container {
   width: 90%;
-  margin: 50px auto;
+  margin: 40px auto;
   overflow: hidden;
 }
 

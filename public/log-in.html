@@ -20,31 +20,31 @@
 <body>
 
 	<nav>
-		<div>
+		<div id="logo">
 			<a href="index.html">
 				<img src="../src/assets/logo-golden-tekt.svg" alt="logo-golden-tekt">
 			</a>
 		</div>
 
 		<div id="toggle">
-			<img src="../src/assets/hamburger.svg" alt="hamburger menu">
-			<img aria-hidden="true" src="../src/assets/cross.svg" alt="cross">
+			<img src="../src/assets/hamburger.svg" alt="hamburger menu" id="hamburger">
+			<img src="../src/assets/cross.svg" alt="cross" id="cross">
 		</div>
 
-		<ul>
+		<ul id="nav-links">
 			<li>
 				<a href="add-venue.html">registrer lokale</a>
 			</li>
 			<li>
-				<a href="log-in.html"><button>logg inn</button></a>
-				<a href="log-in.html" aria-hidden="true">logg inn</a>
+				<a href="log-in.html"></div><button>logg inn</button></a>
+				<a href="log-in.html">logg inn</a>
 			</li>
 		</ul>
 	</nav>
 
 
     <section>
-        <form action="">
+        <form action="" class="form-container margin-top">
 
             <h2>logg inn</h2>
 
@@ -53,11 +53,11 @@
 
             <input type="password" name="password" placeholder="passord.." required>
             <span class="error">Feil passord!</span>
-            <span><a href="#">Glemt passord?</a></span>
+            <span class="small-text"><a href="#">Glemt passord?</a></span>
 
-            <input type="submit" value="logg inn">
+            <button type="submit">logg inn</button>
 
-            <span>Har du ingen bruker? Registrer deg <a href="add-venue.html">her</a></span>
+            <span class="small-text">Har du ingen bruker? Registrer deg <a href="add-venue.html">her</a></span>
 
         </form>
     </section>

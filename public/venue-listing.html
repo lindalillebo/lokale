@@ -13,34 +13,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <link href="scss/style.scss" rel="stylesheet" type="text/css">
-    <script src="https://kit.fontawesome.com/77a58f8262.js" crossorigin="anonymous"></script>
+    <link href="../src/assets/styles.css" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/77a58f8262.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <nav>
-        <div>
-            <a href="index.html">
-                <img src="assets/logo-golden-tekt.svg" alt="logo-golden-tekt">
-            </a>
-        </div>
+	<nav>
+		<div>
+			<a href="index.html">
+				<img src="../src/assets/logo-golden-tekt.svg" alt="logo-golden-tekt">
+			</a>
+		</div>
 
-        <div id="toggle">
-            <img src="assets/hamburger.svg" alt="hamburger menu">
-            <img aria-hidden="true" src="assets/cross.svg" alt="cross">
-        </div>
+		<div id="toggle">
+			<img src="../src/assets/hamburger.svg" alt="hamburger menu">
+			<img aria-hidden="true" src="../src/assets/cross.svg" alt="cross">
+		</div>
 
-        <ul>
-            <li>
-                <a href="add-venue.html">registrer lokale</a>
-            </li>
-            <li>
-                <a href="log-in.html"><button>logg inn</button></a>
-                <a href="log-in.html" aria-hidden="true">logg inn</a>
-            </li>
-        </ul>
-    </nav>
+		<ul>
+			<li>
+				<a href="add-venue.html">registrer lokale</a>
+			</li>
+			<li>
+				<a href="log-in.html"><button>logg inn</button></a>
+				<a href="log-in.html" aria-hidden="true">logg inn</a>
+			</li>
+		</ul>
+	</nav>
 
 
 
@@ -123,12 +123,12 @@
                 <button class="slider__arrow-right" onclick="plusDivs(1)">&#10095;</button>
             </div>
             <span class="search-result-card__venue-name"></span>
-            <span class="search-result-card__accessible-icon"><img src="assets/accessible-icon-brands.svg"
+            <span class="search-result-card__accessible-icon"><img src="../src/assets/accessible-icon-brands.svg"
                     alt="wheelchair"></span>
             <p><b>Fra<span class="search-result-card__venue-price"></span>kr</b> per time</p>
-            <div class="search-result-card__seating"><img src="assets/chair-solid.svg" alt="seating"><span
+            <div class="search-result-card__seating"><img src="../src/assets/chair-solid.svg" alt="seating"><span
                     class="search-result-card__seating-number"></span></div>
-            <div class="search-result-card__standing"><img src="assets/male-solid.svg" alt="man"><span
+            <div class="search-result-card__standing"><img src="../src/assets/male-solid.svg" alt="man"><span
                     class="search-result-card__standing-number"></span></div>
         </div>
 
@@ -140,23 +140,18 @@
         </div>
 
     </div>
-    <footer>
-        <div class="footer-links">
-            <a href="contact.html"><span>Kontakt oss</span></a>
-            <a href="add-venue.html"><span>Registrer ditt lokale</span></a>
-            <a href="log-in.html"><span>Logg inn</span></a>
-            <a href="venue-listing.html"><span>Se alle lokaler</span></a>
-        </div>
-        <div>
-            <span>© Copyright 2021 lokale. All Rights Reserved.</span>
-        </div>
-    </footer>
+	<footer>
+		<ul class="footer-links">
+			<a href="contact.html"><li>Kontakt oss</li></a>
+			<a href="add-venue.html"><li>Registrer ditt lokale</li></a>
+			<a href="log-in.html"><li>Logg inn</li></a>
+			<a href="venue-listing.html"><li>Se alle lokaler</li></a>
+		</ul>
+		<span>© Copyright 2021 lokale. All Rights Reserved.</span>
+	</footer>
 
 
-    <script src="js/script.js"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
-        async></script>
+	<script src="js/script.js"></script>
 </body>
 
 </html>

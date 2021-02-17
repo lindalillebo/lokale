@@ -33,11 +33,10 @@
 
         <ul id="nav-links">
             <li>
-                <a href="add-venue.html">registrer lokale</a>
+                <a class="add-venue-dark" href="add-venue.html">registrer lokale</a>
             </li>
             <li>
                 <a href="log-in.html"></div><button>logg inn</button></a>
-                <a href="log-in.html">logg inn</a>
             </li>
         </ul>
     </nav>
@@ -46,96 +45,103 @@
 
 
     <ul class="breadcrumb">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="venue-listing.html">Searches</a></li>
+        <li><a href="index.html">Home</a>&nbsp;&nbsp;&nbsp; <i class="fas fa-caret-right"></i></li>
+        <li><a href="venue-listing.html">Searches</a>&nbsp;&nbsp;&nbsp; <i class="fas fa-caret-right"></i></li>
         <li><a href="#">.....</a></li>
     </ul>
 
     <div class="venue__description">
-        <h3 class="venue-name">hatlane kontor</h3>
-        <div class="horizontal">
-            <p><b>Fra <span class="card__venue-price">1100</span>kr</b> per time</p>
-            <div class="venue__icons">
-            <span class="venue__accessible-icon"><i class="fab fa-accessible-icon"></i></span>
-                <div><i class="fas fa-chair"></i><span class="venue__seating-number">10</span>
-                </div>
-                <div><i class="fas fa-male"></i><span class="venue__standing-number">-</span>
+        <div class="venue-description__heading">
+            <h3 class="venue-name">hatlane kontor</h3>
+            <div class="horizontal">
+                <p><b>Fra <span class="card__venue-price">1100</span>kr</b> per time</p>
+                <div class="venue__icons">
+                    <span class="venue__accessible-icon"><i class="fab fa-accessible-icon"></i></span>
+                    <div><i class="fas fa-chair"></i><span class="venue__seating-number">10</span>
+                    </div>
+                    <div><i class="fas fa-male"></i><span class="venue__standing-number">-</span>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="slider">
+            <img class="slider__img" src="../src/assets/pexels-pixabay-221537.jpg" style="width:100%">
 
-                <div class="slider">
-                    <img class="slider__img" src="../src/assets/pexels-pixabay-221537.jpg" style="width:100%">
+            <span class="slider__arrow-left" onclick="plusDivs(-1)">&#10094;</span>
+            <span class="slider__arrow-right" onclick="plusDivs(1)">&#10095;</span>
+        </div>
 
-                    <span class="slider__arrow-left" onclick="plusDivs(-1)">&#10094;</span>
-                    <span class="slider__arrow-right" onclick="plusDivs(1)">&#10095;</span>
+        <div class="venue-spesific">
+
+            <h4>Om <span class="venue-name">Hatlane kontor</span></h4>
+            <p class="venue-spesific__description">Hatlane kontor er et lokalt kontor midt på Gåseid.
+                Vi har 10 sitteplasser, og mye teknologi du vil
+                trenge for ditt møte. Hit kan du ta med egen
+                mat og drikke og vi vasker selvfølgelig etter deg.</p>
+
+            <div class="border-bottom"></div>
+
+            <div class="grid">
+                <div>
+                    <h4>Type arrangement</h4>
+                    <p class="venue-spesific__event-type">Bedriftsarrangement</p>
+                    <p class="venue-spesific__event-type">Bryllup</p>
+                    <p class="venue-spesific__event-type">Dåp / Navnedag / Konfirmasjon</p>
+                    <p class="venue-spesific__event-type">Fest</p>
+                    <p class="venue-spesific__event-type">Forestilling / Konsert</p>
+                    <p class="venue-spesific__event-type">Julebord</p>
+                    <p class="venue-spesific__event-type">Konferanse</p>
+                    <p class="venue-spesific__event-type">Middag / Lunsj</p>
+                    <p class="venue-spesific__event-type">Møte</p>
+                    <p class="venue-spesific__event-type">Utstilling</p>
                 </div>
-
-                <div class="venue-spesific">
-                <h4>Om <span class="venue-name">Hatlane kontor</span></h4>
-                <p class="venue-spesific__description">Hatlane kontor er et lokalt kontor midt på Gåseid. 
-                    Vi har 10 sitteplasser, og mye teknologi du vil
-                    trenge for ditt møte. Hit kan du ta med egen 
-                    mat og drikke og vi vasker selvfølgelig etter deg.</p>
-
-                    <div class="border-bottom"></div>
-
-                <h4>Type arrangement</h4>
-                <p class="venue-spesific__event-type">Bedriftsarrangement</p>
-                <p class="venue-spesific__event-type">Bryllup</p>
-                <p class="venue-spesific__event-type">Dåp / Navnedag / Konfirmasjon</p>
-                <p class="venue-spesific__event-type">Fest</p>
-                <p class="venue-spesific__event-type">Forestilling / Konsert</p>
-                <p class="venue-spesific__event-type">Julebord</p>
-                <p class="venue-spesific__event-type">Konferanse</p>
-                <p class="venue-spesific__event-type">Middag / Lunsj</p>
-                <p class="venue-spesific__event-type">Møte</p>
-                <p class="venue-spesific__event-type">Utstilling</p>
-
-                <h4>Fasiliteter</h4>
-                <p class="venue-spesific__amenities">Wifi</p>
-                <p class="venue-spesific__amenities">Tilbyr alkohol</p>
-                <p class="venue-spesific__amenities">Tilbyr matservering</p>
-                <p class="venue-spesific__amenities">Medbragt alkohol tillat</p>
-                <p class="venue-spesific__amenities">Medbragt mat tillat</p>
-                <p class="venue-spesific__amenities">Dansegulv</p>
-                <p class="venue-spesific__amenities">Rollestolvennlig</p>
-                <p class="venue-spesific__amenities">Scene</p>
-                <p class="venue-spesific__amenities">Prosjektor / TV</p>
-                <p class="venue-spesific__amenities">Selvbetjent kjøkken</p>
-
-                <div class="border-bottom"></div>
-
-                <p>Har du spørsmål om vårt lokale, send oss en forespørsel med dine spørsmål. Det er gratis og helt uten
-                    forpliktelser.</p>
-
+                <div>
+                    <h4>Fasiliteter</h4>
+                    <p class="venue-spesific__amenities">Wifi</p>
+                    <p class="venue-spesific__amenities">Tilbyr alkohol</p>
+                    <p class="venue-spesific__amenities">Tilbyr matservering</p>
+                    <p class="venue-spesific__amenities">Medbragt alkohol tillat</p>
+                    <p class="venue-spesific__amenities">Medbragt mat tillat</p>
+                    <p class="venue-spesific__amenities">Dansegulv</p>
+                    <p class="venue-spesific__amenities">Rollestolvennlig</p>
+                    <p class="venue-spesific__amenities">Scene</p>
+                    <p class="venue-spesific__amenities">Prosjektor / TV</p>
+                    <p class="venue-spesific__amenities">Selvbetjent kjøkken</p>
+                </div>
             </div>
 
-            <div class="sidebar">
-                <a href="enquire-venue.html"><button class="btn--large">send forespørsel</button></a>
-                <div class="venue-spesific__map"></div>
-            </div>
+            <div class="border-bottom"></div>
 
-            <footer>
-                <ul class="footer-links">
-                    <a href="contact.html">
-                        <li>Kontakt oss</li>
-                    </a>
-                    <a href="add-venue.html">
-                        <li>Registrer ditt lokale</li>
-                    </a>
-                    <a href="log-in.html">
-                        <li>Logg inn</li>
-                    </a>
-                    <a href="venue-listing.html">
-                        <li>Se alle lokaler</li>
-                    </a>
-                </ul>
-                <span>© Copyright 2021 lokale. All Rights Reserved.</span>
-            </footer>
+            <p>Har du spørsmål om vårt lokale, send oss en forespørsel med dine spørsmål. Det er gratis og helt uten
+                forpliktelser.</p>
+
+        </div>
+
+        <div class="sidebar">
+            <a href="enquire-venue.html"><button class="btn--large">send forespørsel</button></a>
+            <div class="venue-spesific__map"></div>
+        </div>
+
+        <footer>
+            <ul class="footer-links">
+                <a href="contact.html">
+                    <li>Kontakt oss</li>
+                </a>
+                <a href="add-venue.html">
+                    <li>Registrer ditt lokale</li>
+                </a>
+                <a href="log-in.html">
+                    <li>Logg inn</li>
+                </a>
+                <a href="venue-listing.html">
+                    <li>Se alle lokaler</li>
+                </a>
+            </ul>
+            <span>© Copyright 2021 lokale. All Rights Reserved.</span>
+        </footer>
 
 
-            <script src="js/script.js"></script>
+        <script src="js/script.js"></script>
 </body>
 
 </html>

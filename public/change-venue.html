@@ -32,11 +32,10 @@
 
 		<ul id="nav-links">
 			<li>
-				<a href="add-venue.html">registrer lokale</a>
+				<a class="add-venue-dark" href="add-venue.html">registrer lokale</a>
 			</li>
 			<li>
 				<a href="log-in.html"></div><button>logg inn</button></a>
-				<a href="log-in.html">logg inn</a>
 			</li>
 		</ul>
 	</nav>
@@ -47,11 +46,11 @@
     </div>
 
     <form action="" class="form-container">
-        <span>Her kan du legge til eller endre bilder eller informasjon på din profil. Vil du slette ditt lokale fra
-            lokale.no, kan du gjøre det nederst på siden. Har du noen spørsmål, send oss en melding <a
-                href="contact.html">her!</a></span>
+        <p>Her kan du legge til eller endre bilder eller informasjon på din profil. Vil du slette ditt lokale fra
+            lokale.no, kan du gjøre det nederst på siden. Har du noen spørsmål, send oss en melding <a>
+                href="contact.html">her!</a></p>
 
-        <h4>kontakt informasjon</h4>
+        <h3>kontakt informasjon</h3>
 
         <label for="venue-name">Navn på lokale</label>
         <input type="text" id="venue-name" name="venue-name" required>
@@ -85,76 +84,141 @@
         <input type="password" id="password" name="password" required>
         <span class="error">Dette feltet kan ikke være tomt</span>
 
-        <h4 class="padding-top">informasjon om ditt lokale</h4>
+        <h3 class="padding-top">informasjon om ditt lokale</h3>
 
-        <label for="text">Hvilket type arrangement kan holdes der?</label>
-        <input type="checkbox" name="event1" value="bedriftsarrangement">
-        <label for="event1">Bedriftsarrangement</label>
-        <input type="checkbox" name="event2" value="bryllup">
-        <label for="event2">Bryllup</label>
-        <input type="checkbox" name="event3" value="dåp / navnedag / konfirmasjon">
-        <label for="event3">Dåp / Navnedag / Konfirmasjon</label>
-        <input type="checkbox" name="event4" value="fest">
-        <label for="event4">Fest</label>
-        <input type="checkbox" name="event5" value="forestilling / konsert">
-        <label for="event5">Forestilling / Konsert</label>
-        <input type="checkbox" name="event6" value="julebord">
-        <label for="event6">Julebord</label>
-        <input type="checkbox" name="event7" value="kurs / konferanse">
-        <label for="event7">Kurs / Konferanse</label>
-        <input type="checkbox" name="event8" value="middag / lunsj">
-        <label for="event8">Middag / Lunsj</label>
-        <input type="checkbox" name="event9" value="møte">
-        <label for="event9">Møte</label>
-        <input type="checkbox" name="event10" value="utstilling">
-        <label for="event10">Utstilling</label>
+        <label for="text">Hvilket type arrangement kan holdes der?<span class="red"> *</span></label>
+        
+        <label class="padding-left" for="event1">Bedriftsarrangement
+            <input type="checkbox" name="event1" value="bedriftsarrangement">
+            <span class="checkbox"></span>
+        </label>
+        
+        <label class="padding-left" for="event2">Bryllup
+            <input type="checkbox" name="event2" value="bryllup">
+            <span class="checkbox"></span>
+        </label>
+        
+        <label class="padding-left" for="event3">Dåp / Navnedag / Konfirmasjon
+            <input type="checkbox" name="event3" value="dåp / navnedag / konfirmasjon">
+            <span class="checkbox"></span>
+        </label>
+        
+        <label class="padding-left" for="event4">Fest
+            <input type="checkbox" name="event4" value="fest">
+            <span class="checkbox"></span>
+        </label>
+        
+        <label class="padding-left" for="event5">Forestilling / Konsert
+            <input type="checkbox" name="event5" value="forestilling / konsert">
+            <span class="checkbox"></span>
+        </label>
+        
+        <label class="padding-left" for="event6">Julebord
+            <input type="checkbox" name="event6" value="julebord">
+            <span class="checkbox"></span>
+        </label>
+       
+        <label class="padding-left" for="event7">Kurs / Konferanse
+            <input type="checkbox" name="event7" value="kurs / konferanse">
+            <span class="checkbox"></span>
+        </label>
+     
+        <label class="padding-left" for="event8">Middag / Lunsj
+            <input type="checkbox" name="event8" value="middag / lunsj">
+            <span class="checkbox"></span>
+        </label>
+        
+        <label class="padding-left" for="event9">Møte
+            <input type="checkbox" name="event9" value="møte">
+            <span class="checkbox"></span>
+        </label>
+       
+        <label class="padding-left" for="event10">Utstilling
+            <input type="checkbox" name="event10" value="utstilling">
+            <span class="checkbox"></span>
+        </label>
         <span class="error">Vennligst velg minst en av valgene</span>
 
-        <label for="ameneties">Fasiliteter</label>
-        <input type="checkbox" name="amenity1" value="wifi">
-        <label for="amenity1">Wifi</label>
-        <input type="checkbox" name="amenity2" value="tilbyr alkohol">
-        <label for="amenity2">Tilbyr alkohol</label>
-        <input type="checkbox" name="amenity3" value="tilbyr matservering">
-        <label for="amenity3">Tilbyr matservering</label>
-        <input type="checkbox" name="amenity4" value="medbragt alkohol tillat">
-        <label for="amenity4">Medbragt alkohol tillat</label>
-        <input type="checkbox" name="amenity5" value="medbragt mat tillatt">
-        <label for="amenity5">Medbragt mat tillatt</label>
-        <input type="checkbox" name="amenity6" value="dansegulv">
-        <label for="amenity6">Dansegulv</label>
-        <input type="checkbox" name="amenity7" value="rullestolvennlig">
-        <label for="amenity7">Rullestolvennlig</label>
-        <input type="checkbox" name="amenity8" value="scene">
-        <label for="amenity8">Scene</label>
-        <input type="checkbox" name="amenity9" value="prosjektor / TV">
-        <label for="amenity9">Prosjektor / TV</label>
-        <input type="checkbox" name="amenity10" value="selvbetjent kjøkken">
-        <label for="amenity10">Selvbetjent kjøkken</label>
-        <span class="error">Vennligst velg minst en av valgene</span>
+        <label for="ameneties">Fasiliteter<span class="red"> *</span></label>
+        
+        <label class="padding-left" for="amenity1">Wifi
+            <input type="checkbox" name="amenity1" value="wifi">
+            <span class="checkbox"></span>
+        </label>
+        
+        <label class="padding-left" for="amenity2">Tilbyr alkohol
+            <input type="checkbox" name="amenity2" value="tilbyr alkohol">
+            <span class="checkbox"></span>
+        </label>
+       
+        <label class="padding-left" for="amenity3">Tilbyr matservering
+            <input type="checkbox" name="amenity3" value="tilbyr matservering">
+            <span class="checkbox"></span>
+        </label>
+       
+        <label class="padding-left" for="amenity4">Medbragt alkohol tillat
+            <input type="checkbox" name="amenity4" value="medbragt alkohol tillat">
+            <span class="checkbox"></span>
+        </label>
+      
+        <label class="padding-left" for="amenity5">Medbragt mat tillatt
+            <input type="checkbox" name="amenity5" value="medbragt mat tillatt">
+            <span class="checkbox"></span>
+        </label>
+     
+        <label class="padding-left" for="amenity6">Dansegulv
+            <input type="checkbox" name="amenity6" value="dansegulv">
+            <span class="checkbox"></span>
+        </label>
+     
+        <label class="padding-left" for="amenity7">Rullestolvennlig
+            <input type="checkbox" name="amenity7" value="rullestolvennlig">
+            <span class="checkbox"></span>
+        </label>
+       
+        <label class="padding-left" for="amenity8">Scene
+            <input type="checkbox" name="amenity8" value="scene">
+            <span class="checkbox"></span>
+        </label>
+      
+        <label class="padding-left" for="amenity9">Prosjektor / TV
+            <input type="checkbox" name="amenity9" value="prosjektor / TV">
+            <span class="checkbox"></span>
+        </label>
+       
+        <label class="padding-left" for="amenity10">Selvbetjent kjøkken
+            <input type="checkbox" name="amenity10" value="selvbetjent kjøkken">
+            <span class="checkbox"></span>
+        </label>
 
         <label for="text">Hvor mange sitteplasser har dere?</label>
-        <input type="text" name="sitting" value="sitting" required>
+        <input type="text" name="sitting" required>
         <span class="error">Dette feltet kan ikke være tomt</span>
 
         <label for="text">Hvor mange ståplasser har dere?</label>
-        <input type="text" name="standing" value="standing" required>
+        <input type="text" name="standing" required>
         <span class="error">Dette feltet kan ikke være tomt</span>
 
-        <label for="text">Hvilken pristype har dere?</label>
-        <input type="radio" name="per-person" value="per-person" checked>
-        <label for="per-person">Per pers</label>
+        <label for="text">Hvilken pristype har dere?<span class="red"> *</span></label>
+        <label class="padding-left" for="per-person">Per pers
+            <input type="radio" name="per-person" value="per-person" checked>
+            <span class="radio"></span>
+        </label>
+        <label class="padding-left" for="venue-hire">Lokalleie
         <input type="radio" name="venue-hire" value="venue-hire">
-        <label for="venue-hire">Lokalleie</label>
+            <span class="radio"></span>
+        </label>
+        <label class="padding-left" for="minimum-price">Minimumspris
         <input type="radio" name="minimum-price" value="minimum-price">
-        <label for="minimum-price">Minimumspris</label>
+            <span class="radio"></span>
+        </label>
 
         <label for="price">Fra pris</label>
         <input type="number" name="price" required>
         <span class="error">Vennligst fyll din fra pris</span>
 
-        <label for="images">Legg ved bilder fra lokale</label>
-        <input type="image" name="images" required>
+        <label for="images" class="file-upload">Legg ved bilder fra lokale<span class="red"> *</span></label>
+        <input type="file" name="images" required>
         <span class="error">Vennligst legg til minst ett bilde</span>
 
         <label for="description">Beskrivelse til kundene</label>

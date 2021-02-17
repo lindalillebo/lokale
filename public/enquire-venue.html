@@ -33,11 +33,10 @@
 
 		<ul id="nav-links">
 			<li>
-				<a href="add-venue.html">registrer lokale</a>
+				<a class="add-venue-dark" href="add-venue.html">registrer lokale</a>
 			</li>
 			<li>
 				<a href="log-in.html"></div><button>logg inn</button></a>
-				<a href="log-in.html">logg inn</a>
 			</li>
 		</ul>
 	</nav>
@@ -84,10 +83,15 @@
         <span class="error">Vennligst velg et av alternativene</span>
 
         <label for="text">Sitteplasser<span class="red"> *</span></label>
-        <input type="radio" name="sitting" value="sitting" checked>
-        <label for="sitting">Sittende</label>
-        <input type="radio" name="standing" value="standing">
-        <label for="standing">Stående</label>
+        <label class="padding-left" for="sitting">Sittende
+            <input type="radio" name="sitting" value="sitting">
+            <span class="radio"></span>
+        </label>
+
+        <label class="padding-left" for="standing">Stående
+            <input type="radio" name="standing" value="standing">
+            <span class="radio"></span>
+        </label>
 
         <label for="text">Antall gjester<span class="red"> *</span></label>
         <input type="number" name="number-guests" required>

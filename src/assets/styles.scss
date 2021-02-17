@@ -1,174 +1,87 @@
-@import 'variables';
+@import "variables";
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Quando&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Quando&display=swap");
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    font-family: $font-stack;
-    font-weight: 300;
-    color: $dark;
-    background-color: $beige;
-    font-size: 1em;
-    height: 100%;
-    margin: 0 0 350px;
-    padding: 0;
+  font-family: $font-stack;
+  font-weight: 300;
+  color: $dark;
+  background-color: $beige;
+  font-size: 0.9em;
+  height: 100%;
+  margin: 0 0 350px;
+  padding: 0;
 }
 
-*, *:before, *:after {
-    box-sizing: border-box;
-  }
-
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 // Headings
 
-h1, h2, h3 {
-    font-family: $heading-font-family;
+h1,
+h2,
+h3 {
+  font-family: $heading-font-family;
 }
 
 h1 {
-    font-size: 2.2em;
-    color: $light;
-    margin: 0;
+  font-size: 2.2em;
+  color: $light;
+  margin: 0;
 }
 
 h2 {
-    font-size: 2em;
-    text-align: center;
-    margin: 40px 0 50px;
+  font-size: 2em;
+  text-align: center;
+  margin: 40px 0 50px;
 }
 
 h3 {
-    font-size: 1.8em;
-    margin: 10px 0 20px;
-    text-align: center;
+  font-size: 1.8em;
+  margin: 10px 0 20px;
+  text-align: center;
 }
 
-
 h4 {
-    font-size: 1.1em;
-    margin-top: 10px;
+  font-size: 1.1em;
+  margin-top: 10px;
 }
 
 a {
-    text-decoration: none;
-    color: $dark;
+  text-decoration: none;
+  color: $dark;
 }
 
 // Spacing
 
 .padding-top {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 .margin-top {
-    margin-top: 80px !important;
+  margin-top: 80px !important;
 }
-
-// Card
-
-
-.search-results {
-    .page-numbers {
-        font-weight: 500;
-        font-size: 0.8em;
-        margin-left: 20px;
-    }
-    .pagination {
-        text-align: center;
-        padding-bottom: 30px;
-    }
-}
-
-
-.card {
-    width: 90%;
-    display: block;
-    margin: 60px auto;
-    display: flex;
-    flex-direction: column;
-    .card__description {
-        display: flex;
-        flex-direction: column;
-    }
-    .card--horizontal {
-        display: flex;
-        justify-content: space-between;
-        margin: 10px 0 5px;
-        p {
-            margin: 0;
-        }
-        .card__seating {
-            display: flex;
-            flex-direction: row;
-            i {
-                padding: 0 7px;
-            }
-        }
-    }
-}
-
-
-.horizontal {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px auto 30px;
-    width: 80%;
-    p {
-        margin: 0;
-    }
-    .venue__icons {
-        display: flex;
-        flex-direction: row;
-        i {
-            padding: 0 7px;
-        }
-    }
-}
-
-// Venue spesific page
-
-.venue-spesific, .sidebar {
-    width: 90%;
-    display: block;
-    margin: auto;
-    h4 {
-        margin-top: 40px;
-    }
-    p {
-        font-weight: 500;
-        font-size: 0.9em;
-    }
-    .border-bottom {
-        width: 100%;
-        margin: 35px 0;
-    }
-}
-
-
-// Slider
-
-.slider__arrow-right, .slider__arrow-left {
-    color: $light;
-    display: none;
-}
-
 
 // Homepage
 
 .container {
-    width: 90%;
-    margin: 40px auto -50px;
-    overflow: hidden;
-    img {
-        width: 100%;
-    }
-    h4 {
-        margin-bottom: 50px;
-    }
+  width: 90%;
+  margin: 40px auto -50px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  h4 {
+    margin-bottom: 50px;
+  }
 }
 
 input::-webkit-outer-spin-button,
@@ -177,379 +90,793 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
-    -moz-appearance: textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
+.cover {
+  object-fit: cover;
+}
 
 // Button
 
 button {
-    display: inline-block;
-    background-color: $golden;
-    font-size: 1em;
-    color: $light;
-    border: none;
-    border-radius: 5px;
-    position: relative;
-    padding: 5px 15px;
+  display: inline-block;
+  background-color: $golden;
+  font-size: 1em;
+  color: $light;
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  padding: 5px 15px;
 }
 
 button:after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    bottom: -3px;
-    right: -3px;
-    border: 1px solid $dark;
-    padding: 0;
-    margin: 0;
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  bottom: -3px;
+  right: -3px;
+  border: 1px solid $dark;
+  padding: 0;
+  margin: 0;
 }
 
 button:hover {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 button:active {
-    background-color: darken($golden, 10%);
+  background-color: darken($golden, 10%);
 }
 
 button:hover:after {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: all 0.2s ease;
 }
 
 #btn--round:hover:after {
-    border-radius: 50%;
+  border-radius: 50%;
+  transition: all 0.2s ease;
 }
 
 #btn--round {
-    display: block;
-    margin: 20px auto;
-    border-radius: 50%;
-    height: 42px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 50%;
+  height: 42px;
 }
 
 .btn--large {
-    padding: 10px 30px;
-    margin-top: 50px;
-    width: 100%;;
+  padding: 10px 30px;
+  margin-top: 50px;
+  width: 100%;
 }
 
-#btn-delete {
-    background-color: $beige;
+#btn--delete {
+  background-color: $brown;
+  &:active,
+  &:focus {
+    background-color: $dark;
+  }
 }
-
 
 // Navigation
 
 nav {
-    overflow: auto;
-    #logo {
-        float: left;
-        margin: 15px;
-        width: 150px;
+  overflow: auto;
+  #logo {
+    float: left;
+    margin: 15px;
+    width: 120px;
+  }
+  #toggle {
+    float: right;
+    margin: 15px;
+    width: 38px;
+  }
+  #cross {
+    display: none;
+  }
+  #nav-links {
+    display: none;
+    margin-bottom: 0;
+    a {
+      display: block;
+      color: $light;
+      padding: 15px;
     }
-    #toggle {
-        float: right;
-        margin: 15px;
-        width: 50px;
+    &.toggle-menu {
+      display: inline;
     }
-    #cross {
-        display: none;
-    }
-    #nav-links {
-        display: none;
-        margin-bottom: 0;
-        a {
-            display: block;
-            color: $light;
-            padding: 15px;
-        }
-        &.toggle-menu {
-            display: inline;
-        }
-    }
+  }
 }
 
 .nav-border {
-    box-shadow: 0px 2px 7px lighten($brown, 50%);
+  box-shadow: 0px 2px 7px lighten($brown, 50%);
 }
 
 ul {
-    list-style-type: none;
-    display: inline-block;
-    width: 100%;
-    padding: 0;
+  list-style-type: none;
+  display: inline-block;
+  width: 100%;
+  padding: 0;
 }
-
 
 // Footer
 
 footer {
-    position: absolute;
-    width: 100%;
-    background-color: $brown;
-    color: $light;
-    height: 250px;
-    padding: 5px 0 20px;
-    left: 0;
-    bottom: 0;
-    ul {
-        display: block;
-        width: 40%;
-        margin: 15px auto;
-        a {
-            text-decoration: none;
-            color: $light;
-            padding: 10px;
-        }
-        a:hover, a:active {
-            color: $golden;
-        }
+  position: absolute;
+  width: 100%;
+  background-color: $brown;
+  color: $light;
+  height: 250px;
+  padding: 5px 0 20px;
+  left: 0;
+  bottom: 0;
+  ul {
+    display: block;
+    width: 40%;
+    margin: 15px auto;
+    font-weight: 500;
+    a {
+      text-decoration: none;
+      color: $light;
+      padding: 10px;
     }
-    span {
-        display: block;
-        text-align: center;
+    a:hover,
+    a:active {
+      color: $golden;
     }
+  }
+  span {
+    display: block;
+    text-align: center;
+    font-size: 0.8em;
+  }
 }
 
 // Hero
 
 .hero {
-    background: url('background-img.jpg') no-repeat center center;
-    height: 100vh;
-    position: relative;
-    background-size: cover;
-    overflow-x: hidden;
-    .hero__text {
-        margin: 0 auto;
-        -ms-transform: translateY(70%);
-        transform: translateY(70%);
-        width: 90%;
-        .hero__search {
-            input, select {
-                display: block;
-                width: 75%;
-                border: none;
-                padding: 10px 50px 10px 10px;
-                margin: 10px auto;
-                border: 1px solid lighten($brown, 50%);
-                font-family: $font-stack;
-                letter-spacing: 0.1em;
-                overflow: hidden;
-                color: $brown;
-            }
-            ::placeholder {
-                color: $brown;
-                opacity: 1;
-            }
-            *:focus {
-                outline: none;
-            }
-        }
+  background: url("background-img.jpg") no-repeat center center;
+  height: 100vh;
+  position: relative;
+  background-size: cover;
+  overflow-x: hidden;
+  .hero__text {
+    margin: 0 auto;
+    -ms-transform: translateY(70%);
+    transform: translateY(70%);
+    width: 90%;
+    .hero__search {
+      input,
+      select {
+        display: block;
+        width: 75%;
+        border: none;
+        padding: 10px 50px 10px 10px;
+        margin: 10px auto;
+        border: 1px solid lighten($brown, 50%);
+        font-family: $font-stack;
+        letter-spacing: 0.1em;
+        overflow: hidden;
+        color: $brown;
+      }
+      ::placeholder {
+        color: $brown;
+        opacity: 1;
+      }
+      *:focus {
+        outline: none;
+      }
     }
-}
-
-// Search
-
-
-.search-container {
-    width: 100%;
-    
-    .form-container {
-        box-shadow: none;
-        background-color: $beige;
-        margin-bottom: 10px;
-    }
-}
-
-.search-results {
-    background-color: $light;
-    margin-bottom: -100px;
-}
-
-.border-bottom {
-    border-bottom: 1px solid lighten($brown, 50%);
-    margin: 25px;
+  }
 }
 
 // Forms
 
 .form-container {
-    background-color: $light;
+  background-color: $light;
+  width: 90%;
+  margin: 0 auto 80px;
+  padding: 5px 0 30px;
+  box-shadow: 0 1px 4px $brown;
+  h4 {
+    font-size: 1em;
+    font-weight: 500;
+    text-align: center;
     width: 90%;
-    margin: 0 auto 80px;
-    padding: 5px 0 30px;
-    box-shadow: 0px 1px 4px $brown;
-    h4 {
-        font-size: 1em;
-        font-weight: 500;
-        text-align: center;
-        width: 90%;
-        margin: 30px auto 35px;
-        line-height: 20px;
+    margin: 30px auto 35px;
+    line-height: 20px;
+  }
+  h3 {
+    font-size: 1.3em;
+    width: 90%;
+    margin: 15px auto 35px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $dark;
+  }
+  p {
+    font-size: 0.9em;
+    font-weight: 500;
+    width: 90%;
+    margin: 30px auto 50px;
+    line-height: 23px;
+  }
+  input,
+  textarea,
+  select {
+    display: block;
+    background-color: #fff;
+    padding: 10px;
+    margin: 15px auto;
+    border: 1px solid lighten($brown, 50%);
+    width: 90%;
+    font-family: $font-stack;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0 0 4px lighten($brown, 40%);
+  }
+  ::placeholder {
+    color: lighten($brown, 20%);
+    opacity: 1;
+  }
+  label {
+    position: relative;
+    display: block;
+    margin: 25px auto 10px;
+    width: 90%;
+    font-size: 0.9em;
+    font-weight: 700;
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
     }
-    h3 {
-        font-size: 1.3em;
-        width: 90%;
-        margin: 15px auto 35px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid $dark;
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
     }
-    p {
-        font-size: 0.9em;
-        font-weight: 500;
-        width: 90%;
-        margin: 30px auto 50px;
-        line-height: 23px;
-    }
-    input, textarea, select {
-        display: block;
-        background-color: #fff;
-        padding: 10px;
-        margin: 15px auto;
-        border: 1px solid lighten($brown, 50%);
-        width: 90%;
-        font-family: $font-stack;
-        font-weight: 300;
-        letter-spacing: 0.1em;
-    }
-    input:focus, textarea:focus {
-        outline: none;
-        box-shadow:0 0 4px lighten($brown, 40%);
-    }
-    ::placeholder {
-        color: lighten($brown, 20%);
-        opacity: 1;
-    }
-    label {
-        position: relative;
-        display: block;
-        margin: 25px auto 10px;
-        width: 90%;
-        font-weight: 500;
-        input[type=checkbox] {
-            position: absolute;
-            opacity: 0;
-
-        }
-        input[type=radio] {
-            position: absolute;
-            opacity: 0;
-
-        }
-        .checkbox, .radio {
-            position: absolute;
-            top:0;
-            left:0;
-            width:20px; 
-            height:20px;
-            background-color: #fff;
-            border: 1px solid lighten($brown, 50%);
-            &::after {
-                content: "";
-                position: absolute;
-                display: none;
-                left: 6px;
-                top: 2px;
-                width: 6px;
-                height: 10px;
-                border: solid $dark;
-                border-width: 0 2px 2px 0;
-                transform: rotate(45deg);
-            }
-        }
-        .radio {
-            border-radius: 50%;
-        }
-        &:hover .checkbox, &:hover .radio {
-            background-color: $beige;
-        }
-    }
-    label input[type=checkbox]:checked ~ .checkbox {
-        background-color: $golden;
-    }
-    label input[type=checkbox]:checked ~ .checkbox::after {
-        display: block;
-    }
-    .padding-left {
-        padding-left: 40px;
-        cursor: pointer;
-        font-size: 0.9em;
-    }
-    button {
-        width: 90%;
-        display: block;
-        margin: 40px auto;
-        padding: 10px;
-    } 
-    .small-text {
-        font-size: 0.8em;
-        display: block;
-        margin: 0 auto;
-        width: 90%;
-    }
-    .error {
+    .checkbox,
+    .radio {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 14.55px;
+      height: 14.55px;
+      background-color: #fff;
+      border: 1px solid lighten($brown, 50%);
+      &::after {
+        content: "";
+        position: absolute;
         display: none;
+        left: 6px;
+        top: 2px;
+        width: 6px;
+        height: 10px;
+        border: solid $dark;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
     }
-    a:hover {
-        color: $golden;
+    .radio {
+      border-radius: 50%;
     }
+    &:hover .checkbox,
+    &:hover .radio {
+      background-color: $beige;
+    }
+  }
+  label input[type="checkbox"]:checked ~ .checkbox {
+    background-color: $golden;
+  }
+  label input[type="checkbox"]:checked ~ .checkbox::after {
+    display: block;
+  }
+  .padding-left {
+    padding-left: 40px;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: 500;
+  }
+  button {
+    width: 90%;
+    display: block;
+    margin: 40px auto;
+    padding: 10px;
+  }
+  .small-text {
+    font-size: 0.8em;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+  }
+  .error {
+    display: none;
+  }
+  a:hover {
+    color: $golden;
+  }
 }
 
 .red {
-    color: $red;
+  color: $red;
 }
 
+// Search
+
+.search-container {
+  width: 100%;
+  margin-top: 20px;
+  .form-container {
+    box-shadow: none;
+    background-color: $beige;
+    margin-bottom: 10px;
+  }
+}
+
+.search-results {
+  background-color: $light;
+  margin-bottom: -100px;
+  padding-top: 20px;
+  .card {
+    width: 90%;
+    display: block;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    .card__description {
+      display: flex;
+      flex-direction: column;
+    }
+    .card--horizontal {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0 5px;
+      p {
+        margin: 0;
+      }
+      .card__seating {
+        display: flex;
+        flex-direction: row;
+        i {
+          padding: 0 7px;
+        }
+      }
+    }
+  }
+  .page-numbers {
+    font-weight: 500;
+    font-size: 0.8em;
+    margin-left: 20px;
+  }
+  .pagination {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+}
+
+.border-bottom {
+  border-bottom: 1px solid lighten($brown, 50%);
+  margin: 25px;
+}
+
+.horizontal {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto 30px;
+  width: 80%;
+  p {
+    margin: 0;
+  }
+  .venue__icons {
+    display: flex;
+    flex-direction: row;
+    i {
+      padding: 0 7px;
+    }
+  }
+}
+
+// Venue spesific page
+
+.venue-spesific,
+.sidebar {
+  width: 90%;
+  display: block;
+  margin: auto;
+  h4 {
+    margin-top: 40px;
+  }
+  p {
+    font-weight: 500;
+    font-size: 0.9em;
+  }
+  .border-bottom {
+    width: 100%;
+    margin: 35px 0;
+  }
+}
+
+// Slider
+
+.slider__arrow-right,
+.slider__arrow-left {
+  color: $light;
+  display: none;
+}
+
+.breadcrumb {
+  display: flex;
+  font-size: 0.8em;
+  margin: 30px 0 35px 50px;
+  li {
+    padding-right: 10px;
+  }
+}
 
 // Tablet
 @media (min-width: 600px) and (max-width: 1020px) {
-
   // Navigation
 
-nav {
-    overflow: hidden;
+  nav {
     #logo {
-        float: left;
-        margin: 15px;
-        width: 150px;
+      width: 120px;
+      margin: 18px 0 15px 30px;
     }
     #toggle {
-        display: none;
+      display: none;
     }
     #nav-links {
-        display: inline-block;
-        margin-bottom: 0;
-        li {
-            float: right;
+      display: block;
+      margin-bottom: 0;
+      li {
+        font-weight: 500;
+        float: right;
+        a {
+          padding: 5px 15px;
+        }
+        .add-venue {
+          padding-top: 9px;
+          &:hover {
+            color: $golden;
+            transition: all 0.2s ease;
+          }
+        }
+        .add-venue-dark {
+          color: $dark;
+          padding-top: 9px;
+          &:hover {
+            color: $golden;
+            transition: all 0.2s ease;
+          }
+        }
+      }
     }
-}
+  }
 
+  // Footer
 
-// Footer
-
-footer {
-    // height: 250px;
+  footer {
+    height: 230px;
     ul {
-        display: inline-block;
-        width: 90%;
-        margin: 15px;
+      width: 80%;
+      margin: 15px auto 0;
     }
     span {
-        display: block;
-        text-align: center;
+      margin-right: 50px;
+      text-align: right;
     }
-}
+  }
 
-}
+  // Hero
 
+  .hero {
+    height: 600px;
+    .hero__text {
+      margin: 0 auto;
+      -ms-transform: translateY(30%);
+      transform: translateY(30%);
+      width: 90%;
+      font-size: 1.3em;
+      .hero__search {
+        form {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        input,
+        select {
+          font-size: 0.6em;
+          width: 33.33%;
+        }
+      }
+      #btn--round {
+        height: 35px;
+        width: 35px;
+        padding: 0;
+        i {
+          font-size: 0.7em;
+        }
+      }
+    }
+  }
+
+  // Homepage
+
+  .container {
+    h2 {
+      text-align: start;
+    }
+    .venue-links {
+      display: flex;
+      flex-wrap: wrap;
+      img {
+        height: 200px;
+      }
+      .venue-link-1 {
+        width: 60%;
+        padding: 0 5px;
+      }
+      .venue-link-2 {
+        width: 40%;
+        padding: 0 5px;
+      }
+      .venue-link-3 {
+        width: 40%;
+        padding: 0 5px;
+      }
+      .venue-link-4 {
+        width: 60%;
+        padding: 0 5px;
+      }
+    }
+  }
+
+  // Form
+
+  .form-container__log-in {
+    width: 400px;
+  }
+
+  .form-container__contact {
+    width: 500px;
+    h4 {
+      font-size: 0.9em;
+    }
+  }
+
+  // Search
+
+  .search-container {
+    .padding-left {
+      margin: 10px 0 10px 18px;
+    }
+  }
+
+  .search-results {
+    margin-bottom: -120px;
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      .card {
+        width: 30%;
+      }
+    }
+  }
+
+  .grid {
+    display: flex;
+    div {
+      flex-grow: 2;
+    }
+  }
+
+  // Venue spesific page
+
+  .venue-description__heading {
+    float: left;
+    margin-left: 10px;
+    .horizontal {
+      justify-content: start;
+      width: 100%;
+      margin-left: 40px;
+      .venue__icons {
+        padding-left: 30px;
+      }
+    }
+  }
+}
 
 // Desktop
 @media (min-width: 1020px) {
 
-    
+
+  // Navigation
+
+  nav {
+    #logo {
+      width: 120px;
+      margin: 18px 0 15px 30px;
+    }
+    #toggle {
+      display: none;
+    }
+    #nav-links {
+      display: block;
+      margin-bottom: 0;
+      li {
+        font-weight: 500;
+        float: right;
+        a {
+          padding: 5px 15px;
+        }
+        .add-venue {
+          padding-top: 9px;
+          &:hover {
+            color: $golden;
+            transition: all 0.2s ease;
+          }
+        }
+        .add-venue-dark {
+          color: $dark;
+          padding-top: 9px;
+          &:hover {
+            color: $golden;
+            transition: all 0.2s ease;
+          }
+        }
+      }
+    }
+  }
+
+  // Footer
+
+  footer {
+    height: 200px;
+    ul {
+      width: 80%;
+      margin: 10px auto 0;
+    }
+    span {
+      margin-right: 50px;
+      text-align: right;
+    }
+  }
+
+  // Hero
+
+  .hero {
+    height: 700px;
+    .hero__text {
+      margin: 0 auto;
+      -ms-transform: translateY(100%);
+      transform: translateY(100%);
+      width: 70%;
+      font-size: 1.3em;
+      .hero__search {
+          width: 80%;
+          float: right;
+        form {
+          display: flex;
+          flex-wrap: wrap;
+          width: 94%;
+        }
+        input,
+        select {
+          font-size: 0.6em;
+          width: 33.33%;
+        }
+      }
+      #btn--round {
+        position: absolute;
+        right: 0;
+        height: 35px;
+        width: 35px;
+        margin: 10px 0;
+        padding: 0;
+        i {
+          font-size: 0.7em;
+        }
+      }
+    }
+  }
+
+  // Homepage
+
+  .container {
+      max-width: 900px;
+    h2 {
+      text-align: start;
+    }
+    .venue-links {
+      display: flex;
+      flex-wrap: wrap;
+      img {
+        height: 200px;
+      }
+      .venue-link-1 {
+        width: 60%;
+        padding: 0 5px;
+      }
+      .venue-link-2 {
+        width: 40%;
+        padding: 0 5px;
+      }
+      .venue-link-3 {
+        width: 40%;
+        padding: 0 5px;
+      }
+      .venue-link-4 {
+        width: 60%;
+        padding: 0 5px;
+      }
+    }
+  }
+
+  // Form
+
+  .form-container__log-in {
+    width: 400px;
+  }
+
+  .form-container__contact {
+    width: 500px;
+    h4 {
+      font-size: 0.9em;
+    }
+  }
+
+  .form-container {
+      width: 800px
+  }
+
+  // Search
+
+  .search-container {
+    .padding-left {
+      margin: 10px 0 10px 18px;
+    }
+  }
+
+  .search-results {
+    margin-bottom: -120px;
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      .card {
+        width: 30%;
+      }
+    }
+  }
+
+  .grid {
+    display: flex;
+    div {
+      flex-grow: 2;
+    }
+  }
+
+  // Venue spesific page
+
+  .venue-description__heading {
+    float: left;
+    margin-left: 10px;
+    .horizontal {
+      justify-content: start;
+      width: 100%;
+      margin-left: 40px;
+      .venue__icons {
+        padding-left: 30px;
+      }
+    }
+  }
+
 }

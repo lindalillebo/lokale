@@ -14,41 +14,36 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <link href="../src/assets/styles.css" rel="stylesheet" type="text/css">
-	<script src="https://kit.fontawesome.com/77a58f8262.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/77a58f8262.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <nav>
-		<div id="logo">
-			<a href="index.html">
-				<img src="../src/assets/logo-golden-tekt.svg" alt="logo-golden-tekt">
-			</a>
-		</div>
+    <nav class="nav-border">
+        <div id="logo">
+            <a href="index.html">
+                <img src="../src/assets/logo-dark-text.svg" alt="logo-dark-tekst">
+            </a>
+        </div>
 
-		<div id="toggle">
-			<img src="../src/assets/hamburger.svg" alt="hamburger menu" id="hamburger">
-			<img src="../src/assets/cross.svg" alt="cross" id="cross">
-		</div>
+        <div id="toggle">
+            <img src="../src/assets/hamburger.svg" alt="hamburger menu" id="hamburger">
+            <img src="../src/assets/cross.svg" alt="cross" id="cross">
+        </div>
 
-		<ul id="nav-links">
-			<li>
-				<a href="add-venue.html">registrer lokale</a>
-			</li>
-			<li>
-				<a href="log-in.html"></div><button>logg inn</button></a>
-				<a href="log-in.html">logg inn</a>
-			</li>
-		</ul>
-	</nav>
+        <ul id="nav-links">
+            <li>
+                <a href="add-venue.html">registrer lokale</a>
+            </li>
+            <li>
+                <a href="log-in.html"></div><button>logg inn</button></a>
+                <a href="log-in.html">logg inn</a>
+            </li>
+        </ul>
+    </nav>
 
 
-    <div class="slider">
-        <img class="slider__img" src="" style="width:100%">
 
-        <button class="slider__arrow-left" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="slider__arrow-right" onclick="plusDivs(1)">&#10095;</button>
-    </div>
 
     <ul class="breadcrumb">
         <li><a href="index.html">Home</a></li>
@@ -56,65 +51,91 @@
         <li><a href="#">.....</a></li>
     </ul>
 
-    <div class="venue-spesific">
-        <h3 class="venue-spesific__name">....</h3>
-        <p><b>Fra<span class="venue-spesific__price"></span>kr</b> per time</p>
-        <span class="venue-spesific__accessible-icon"><img src="../src/assets/accessible-icon-brands.svg"
-                alt="wheelchair"></span>
-        <div class="venue-spesific__seating"><img src="../src/assets/chair-solid.svg" alt="seating"><span
-                class="search-result-card__seating-number"></span></div>
-        <div class="venue-spesific__standing"><img src="../src/assets/male-solid.svg" alt="man"><span
-                class="search-result-card__standing-number"></span></div>
+    <div class="venue__description">
+        <h3 class="venue-name">hatlane kontor</h3>
+        <div class="horizontal">
+            <p><b>Fra <span class="card__venue-price">1100</span>kr</b> per time</p>
+            <div class="venue__icons">
+            <span class="venue__accessible-icon"><i class="fab fa-accessible-icon"></i></span>
+                <div><i class="fas fa-chair"></i><span class="venue__seating-number">10</span>
+                </div>
+                <div><i class="fas fa-male"></i><span class="venue__standing-number">-</span>
+                </div>
+            </div>
+        </div>
 
-        <h4>Om .....</h4>
-        <p class="venue-spesific__description"></p>
+                <div class="slider">
+                    <img class="slider__img" src="../src/assets/pexels-pixabay-221537.jpg" style="width:100%">
 
-        <h4>Type arrangement</h4>
-        <p class="venue-spesific__event-type">Bedriftsarrangement</p>
-        <p class="venue-spesific__event-type">Bryllup</p>
-        <p class="venue-spesific__event-type">Dåp / Navnedag / Konfirmasjon</p>
-        <p class="venue-spesific__event-type">Fest</p>
-        <p class="venue-spesific__event-type">Forestilling / Konsert</p>
-        <p class="venue-spesific__event-type">Julebord</p>
-        <p class="venue-spesific__event-type">Konferanse</p>
-        <p class="venue-spesific__event-type">Middag / Lunsj</p>
-        <p class="venue-spesific__event-type">Møte</p>
-        <p class="venue-spesific__event-type">Utstilling</p>
+                    <span class="slider__arrow-left" onclick="plusDivs(-1)">&#10094;</span>
+                    <span class="slider__arrow-right" onclick="plusDivs(1)">&#10095;</span>
+                </div>
 
-        <h4>Fasiliteter</h4>
-        <p class="venue-spesific__amenities">Wifi</p>
-        <p class="venue-spesific__amenities">Tilbyr alkohol</p>
-        <p class="venue-spesific__amenities">Tilbyr matservering</p>
-        <p class="venue-spesific__amenities">Medbragt alkohol tillat</p>
-        <p class="venue-spesific__amenities">Medbragt mat tillat</p>
-        <p class="venue-spesific__amenities">Dansegulv</p>
-        <p class="venue-spesific__amenities">Rollestolvennlig</p>
-        <p class="venue-spesific__amenities">Scene</p>
-        <p class="venue-spesific__amenities">Prosjektor / TV</p>
-        <p class="venue-spesific__amenities">Selvbetjent kjøkken</p>
+                <div class="venue-spesific">
+                <h4>Om <span class="venue-name">Hatlane kontor</span></h4>
+                <p class="venue-spesific__description">Hatlane kontor er et lokalt kontor midt på Gåseid. 
+                    Vi har 10 sitteplasser, og mye teknologi du vil
+                    trenge for ditt møte. Hit kan du ta med egen 
+                    mat og drikke og vi vasker selvfølgelig etter deg.</p>
 
-        <p>Har du spørsmål om vårt lokale, send oss en forespørsel med dine spørsmål. Det er gratis og helt uten
-            forpliktelser.</p>
+                    <div class="border-bottom"></div>
 
-    </div>
+                <h4>Type arrangement</h4>
+                <p class="venue-spesific__event-type">Bedriftsarrangement</p>
+                <p class="venue-spesific__event-type">Bryllup</p>
+                <p class="venue-spesific__event-type">Dåp / Navnedag / Konfirmasjon</p>
+                <p class="venue-spesific__event-type">Fest</p>
+                <p class="venue-spesific__event-type">Forestilling / Konsert</p>
+                <p class="venue-spesific__event-type">Julebord</p>
+                <p class="venue-spesific__event-type">Konferanse</p>
+                <p class="venue-spesific__event-type">Middag / Lunsj</p>
+                <p class="venue-spesific__event-type">Møte</p>
+                <p class="venue-spesific__event-type">Utstilling</p>
 
-    <div class="sidebar">
-        <a href="enquire-venue.html"><button>send forespørsel</button></a>
-        <div class="venue-spesific__map"></div>
-    </div>
+                <h4>Fasiliteter</h4>
+                <p class="venue-spesific__amenities">Wifi</p>
+                <p class="venue-spesific__amenities">Tilbyr alkohol</p>
+                <p class="venue-spesific__amenities">Tilbyr matservering</p>
+                <p class="venue-spesific__amenities">Medbragt alkohol tillat</p>
+                <p class="venue-spesific__amenities">Medbragt mat tillat</p>
+                <p class="venue-spesific__amenities">Dansegulv</p>
+                <p class="venue-spesific__amenities">Rollestolvennlig</p>
+                <p class="venue-spesific__amenities">Scene</p>
+                <p class="venue-spesific__amenities">Prosjektor / TV</p>
+                <p class="venue-spesific__amenities">Selvbetjent kjøkken</p>
 
-    <footer>
-		<ul class="footer-links">
-			<a href="contact.html"><li>Kontakt oss</li></a>
-			<a href="add-venue.html"><li>Registrer ditt lokale</li></a>
-			<a href="log-in.html"><li>Logg inn</li></a>
-			<a href="venue-listing.html"><li>Se alle lokaler</li></a>
-		</ul>
-		<span>© Copyright 2021 lokale. All Rights Reserved.</span>
-	</footer>
+                <div class="border-bottom"></div>
+
+                <p>Har du spørsmål om vårt lokale, send oss en forespørsel med dine spørsmål. Det er gratis og helt uten
+                    forpliktelser.</p>
+
+            </div>
+
+            <div class="sidebar">
+                <a href="enquire-venue.html"><button class="btn--large">send forespørsel</button></a>
+                <div class="venue-spesific__map"></div>
+            </div>
+
+            <footer>
+                <ul class="footer-links">
+                    <a href="contact.html">
+                        <li>Kontakt oss</li>
+                    </a>
+                    <a href="add-venue.html">
+                        <li>Registrer ditt lokale</li>
+                    </a>
+                    <a href="log-in.html">
+                        <li>Logg inn</li>
+                    </a>
+                    <a href="venue-listing.html">
+                        <li>Se alle lokaler</li>
+                    </a>
+                </ul>
+                <span>© Copyright 2021 lokale. All Rights Reserved.</span>
+            </footer>
 
 
-	<script src="js/script.js"></script>
+            <script src="js/script.js"></script>
 </body>
 
 </html>

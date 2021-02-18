@@ -140,7 +140,10 @@ button:hover:after {
 }
 
 #btn--round:hover:after {
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   transition: all 0.2s ease;
 }
 
@@ -148,7 +151,11 @@ button:hover:after {
   display: block;
   margin: 20px auto;
   border-radius: 50%;
-  height: 42px;
+  height: 42px; 
+  &:hover {
+    border-radius: 0;
+    transition: all 0.2s ease;
+  }
 }
 
 .btn--large {

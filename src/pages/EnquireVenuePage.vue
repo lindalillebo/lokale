@@ -1,47 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-
-    <title>lokale</title>
-
-    <meta name="description" content="Booking venues online.">
-    <meta name="keywords" content="booking,venue,venues,event,events">
-    <meta name="author" content="Linda Lillebø">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-    <link href="../src/assets/styles.css" rel="stylesheet" type="text/css">
-	<script src="https://kit.fontawesome.com/77a58f8262.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-
-	<nav class="nav-border">
-		<div id="logo">
-			<a href="index.html">
-				<img src="../src/assets/logo-dark-text.svg" alt="logo-dark-tekst">
-			</a>
-		</div>
-
-		<div id="toggle">
-			<img src="../src/assets/hamburger.svg" alt="hamburger menu" id="hamburger">
-			<img src="../src/assets/cross.svg" alt="cross" id="cross">
-		</div>
-
-		<ul id="nav-links">
-			<li>
-				<a class="add-venue-dark" href="add-venue.html">registrer lokale</a>
-			</li>
-			<li>
-				<a href="log-in.html"></div><button>logg inn</button></a>
-			</li>
-		</ul>
-	</nav>
-
-
+<template>
+    <div>
+        <Header/>
     <div>
         <h2>send en booking forespørsel til .....</h2>
     </div>
@@ -115,19 +74,25 @@
 
 
     </form>
-
-	<footer>
-		<ul class="footer-links">
-			<a href="contact.html"><li>Kontakt oss</li></a>
-			<a href="add-venue.html"><li>Registrer ditt lokale</li></a>
-			<a href="log-in.html"><li>Logg inn</li></a>
-			<a href="venue-listing.html"><li>Se alle lokaler</li></a>
-		</ul>
-		<span>© Copyright 2021 lokale. All Rights Reserved.</span>
-	</footer>
+    <Footer/>
+    </div>
+</template>
 
 
-	<script src="js/script.js"></script>
-</body>
+<script>
+import Header from '..Header.vue'
+import Footer from '../components/Footer.vue'
 
-</html>
+export default {
+    name: 'EnquireVenuePage',
+     components: {
+        Header,
+        Footer
+    }
+}
+</script>
+
+
+<style lang="scss">
+    
+</style>

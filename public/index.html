@@ -1,113 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
-
 	<title>lokale</title>
-
 	<meta name="description" content="Booking venues online.">
 	<meta name="keywords" content="booking,venue,venues,event,events">
 	<meta name="author" content="Linda Lillebø">
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-	<link href="../src/assets/styles.css" rel="stylesheet" type="text/css">
 	<script src="https://kit.fontawesome.com/77a58f8262.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
-	<section class="hero">
-		
-	<nav>
-		<div id="logo">
-			<a href="index.html">
-				<img src="../src/assets/logo-golden-tekt.svg" alt="logo-golden-tekt">
-			</a>
-		</div>
-
-		<div id="toggle">
-			<img src="../src/assets/hamburger.svg" alt="hamburger menu" id="hamburger">
-			<img src="../src/assets/cross.svg" alt="cross" id="cross">
-		</div>
-
-		<ul id="nav-links">
-			<li>
-				<a class="add-venue" href="add-venue.html">registrer lokale</a>
-			</li>
-			<li>
-				<a href="log-in.html"></div><button>logg inn</button></a>
-			</li>
-		</ul>
-	</nav>
-		<div class="hero__text">
-			<h1>finn lokale til ditt <br>&nbsp;&nbsp;&nbsp;arrangement!</h1>
-			<div class="hero__search">
-				<form>
-					<input type="text" placeholder="område">
-					<select name="events" id="events" required>
-						<option value="0">type begivenhet</option>
-						<option value="bedriftsarrangement">Bedriftsarrangement</option>
-						<option value="bryllup">Bryllup</option>
-						<option value="dåp / navnedag / konfirmasjon">Dåp / Navnedag / Konfirmasjon</option>
-						<option value="fest">Fest</option>
-						<option value="forestilling / konsert">Forestilling / Konsert</option>
-						<option value="julebord">Julebord</option>
-						<option value="kurs / konferanse">Kurs / Konferanse</option>
-						<option value="middag / kunsj">Middag / Lunsj</option>
-						<option value="møte">Møte</option>
-						<option value="utstilling">Utstilling</option>
-					</select>
-					<input type="number" placeholder="antall personer">
-					<button id="btn--round" type="submit"><i class="fas fa-search"></i></button>
-				</form>
-			</div>
-		</div>
-	</section>
-
-	<section class="container">
-		<h2>hvilket lokale trenger du?</h2>
-
-		<div class="venue-links">
-<div class="venue-link-1">
-		<a href="">
-			<img class="cover" src="../src/assets/robert-mathews-xXaLfz6V9rQ-unsplash.jpg" alt="Serveringslokaler bilde">
-			<h4>Serveringslokaler</h4>
-		</a>
-	</div>
-	<div class="venue-link-2">
-		<a href="">
-			<img class="cover" src="../src/assets/pexels-thibault-trillet-167491.jpg" alt="Festlokaler bilde">
-			<h4>Festlokaler</h4>
-		</a>
-	</div>
-		<div class="venue-link-3">
-		<a href="">
-			<img class="cover" src="../src/assets/pexels-pixabay-221537.jpg" alt="Møte og konferanse bilde">
-			<h4>Møte og konferanse</h4>
-		</a>
-	</div>
-		<div class="venue-link-4">
-		<a href=""> 
-			<img class="cover" src="../src/assets/james-bold-174ZYtxCtr4-unsplash.jpg" alt="Bryllup bilde">
-			<h4>Bryllup</h4>
-		</a>
-	</div>
-	</section>
-
-	<footer>
-		<ul>
-			<a href="contact.html"><li>Kontakt oss</li></a>
-			<a href="add-venue.html"><li>Registrer ditt lokale</li></a>
-			<a href="log-in.html"><li>Logg inn</li></a>
-			<a href="venue-listing.html"><li>Se alle lokaler</li></a>
-		</ul>
-		<span>© Copyright 2021 lokale. All Rights Reserved.</span>
-	</footer>
-
-	<script src="js/script.js"></script>
+	<div id="app"></div>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzbFAN1xNxA2nxHJMz7-F3Dad5P7pkuTk&map_ids=82b60e18eff0d34a&callback=initMap"
+    async></script>
 </body>
-
 </html>

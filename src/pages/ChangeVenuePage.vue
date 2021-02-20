@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <Header/>
+        <my-header></my-header>
 
         <div>
             <h2>din informasjon:</h2>
@@ -9,8 +9,7 @@
 
         <form action="" class="form-container">
             <p>Her kan du legge til eller endre bilder eller informasjon på din profil. Vil du slette ditt lokale fra
-                lokale.no, kan du gjøre det nederst på siden. Har du noen spørsmål, send oss en melding <a
-                    href="contact.html">her!</a></p>
+                lokale.no, kan du gjøre det nederst på siden. Har du noen spørsmål, send oss en melding <router-link to="/contact"> her!</router-link></p>
 
             <h3>kontakt informasjon</h3>
 
@@ -219,22 +218,17 @@
             </div>
 
         </form>
-
-        <Footer/>
-
     </div>
 </template>
 
 
 <script>
-import Header from '..Header.vue'
-import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 export default {
     name: 'ChangeVenuePage',
      components: {
-        Header,
-        Footer
+        'my-header': Header
     }
 }
 </script>
@@ -242,4 +236,25 @@ export default {
 
 <style lang="scss">
     
+
+
+// Tablet
+@media (min-width: 600px) and (max-width: 1020px) {
+
+
+
+}
+
+
+// Desktop
+@media (min-width: 1020px) {
+
+
+
+}
+
+
+
+
+
 </style>

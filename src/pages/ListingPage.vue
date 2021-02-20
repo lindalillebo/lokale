@@ -1,8 +1,6 @@
 <template>
     <div>
-
-        <Header/>
-
+        <my-header></my-header>
         <div class="grid-venue-listing">
             <div class="search-container">
                 <form action="" class="form-container">
@@ -150,13 +148,37 @@
 
                 </form>
             </div>
-            <Map/>
+            <my-map></my-map>
 
             <div class="search-results">
 
-                <span class="page-numbers">Viser.... av ... lokaler</span>
+              <span class="page-numbers">Viser.... av ... lokaler</span>
 
                 <div class="cards">
+                  <router-link to="/venue-details">
+                    <div class="card">
+                        <div class="slider">
+                            <img class="slider__img" src="../assets/pexels-pixabay-221537.jpg" style="width:100%">
+                            <span class="slider__arrow-left" onclick="plusDivs(-1)">&#10094;</span>
+                            <span class="slider__arrow-right" onclick="plusDivs(1)">&#10095;</span>
+                        </div>
+                        <div class="card__description">
+                            <div class="card--horizontal">
+                                <span class="card__venue-name">Hatlane kontor</span>
+                                <span class="card__accessible-icon"><i class="fab fa-accessible-icon"></i></span>
+                            </div>
+                            <div class="card--horizontal">
+                                <p><b>Fra <span class="card__venue-price">1100</span>kr</b> per time</p>
+                                <div class="card__seating">
+                                    <div><i class="fas fa-chair"></i><span class="card__seating-number">10</span>
+                                    </div>
+                                    <div><i class="fas fa-male"></i><span class="card__standing-number">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </router-link>
                     <div class="card">
                         <div class="slider">
                             <img class="slider__img" src="../assets/pexels-pixabay-221537.jpg" style="width:100%">
@@ -201,58 +223,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="slider">
-                            <img class="slider__img" src="../assets/pexels-pixabay-221537.jpg" style="width:100%">
-                            <span class="slider__arrow-left" onclick="plusDivs(-1)">&#10094;</span>
-                            <span class="slider__arrow-right" onclick="plusDivs(1)">&#10095;</span>
-                        </div>
-                        <div class="card__description">
-                            <div class="card--horizontal">
-                                <span class="card__venue-name">Hatlane kontor</span>
-                                <span class="card__accessible-icon"><i class="fab fa-accessible-icon"></i></span>
-                            </div>
-                            <div class="card--horizontal">
-                                <p><b>Fra <span class="card__venue-price">1100</span>kr</b> per time</p>
-                                <div class="card__seating">
-                                    <div><i class="fas fa-chair"></i><span class="card__seating-number">10</span>
-                                    </div>
-                                    <div><i class="fas fa-male"></i><span class="card__standing-number">-</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                 </div>
+            </div>
 
-                <div class="pagination">
+              <div class="pagination">
                     <a href="#"><i class="fas fa-angle-double-left"></i></a>
                     <a class="active" href="#">1</a>
                     <a href="#">2</a>
                     <a href="#"><i class="fas fa-angle-double-right"></i></a>
-                </div>
-
-            </div>
-
+              </div>
         </div>
-
-        <Footer/>
-
     </div>
 </template>
 
 
 <script>
-import Header from '..Header.vue'
-import Footer from '../components/Footer'
+import Header from '../components/Header'
 import Map from '../components/Map'
 
 export default {
     name: 'ListingPage',
      components: {
-        Header,
-        Footer,
-        Map
+        'my-header': Header,
+        'my-map': Map
     }
 }
 </script>
@@ -260,4 +253,162 @@ export default {
 
 <style lang="scss">
     
+
+.search-container {
+  width: 100%;
+  margin-top: 20px;
+  .form-container {
+    box-shadow: none;
+    background-color: $beige;
+    margin-bottom: 10px;
+  }
+}
+
+.search-results {
+  background-color: $light;
+  margin-bottom: -100px;
+  padding-top: 20px;
+  .card {
+    width: 90%;
+    display: block;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    .card__description {
+      display: flex;
+      flex-direction: column;
+    }
+    .card--horizontal {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0 5px;
+      p {
+        margin: 0;
+      }
+      .card__seating {
+        display: flex;
+        flex-direction: row;
+        i {
+          padding: 0 7px;
+        }
+      }
+    }
+  }
+  .page-numbers {
+    font-weight: 500;
+    font-size: 0.8em;
+    margin-left: 20px;
+  }
+  .pagination {
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 30px;
+    a {
+        padding: 0 5px;
+    }
+  }
+}
+
+.border-bottom {
+  border-bottom: 1px solid lighten($brown, 50%);
+  margin: 25px;
+}
+
+.horizontal {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto 30px;
+  width: 80%;
+  p {
+    margin: 0;
+  }
+  .venue__icons {
+    display: flex;
+    flex-direction: row;
+    i {
+      padding: 0 7px;
+    }
+  }
+}
+
+
+// Tablet
+@media (min-width: 600px) and (max-width: 1020px) {
+
+  .search-container {
+    .padding-left {
+      margin: 10px 0 10px 18px;
+    }
+  }
+
+  .search-results {
+    margin-bottom: -120px;
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      .card {
+        width: 30%;
+      }
+    }
+  }
+
+  .flex {
+    display: flex;
+    div {
+      flex-grow: 2;
+    }
+  }
+
+}
+
+
+// Desktop
+@media (min-width: 1020px) {
+
+  .search-container {
+    .padding-left {
+      margin: 10px 0 10px 18px;
+    }
+  }
+
+  .form-container__log-in {
+    width: 400px;
+  }
+
+  .form-container__contact {
+    width: 500px;
+    h4 {
+      font-size: 0.9em;
+    }
+  }
+
+  .search-results {
+    margin-bottom: -150px;
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      .card {
+        width: 30%;
+      }
+    }
+  }
+
+  .flex {
+    display: flex;
+    margin-bottom: 20px;
+    div {
+      flex-grow: 2;
+      input {
+        margin-bottom: 0;
+        margin-right: 0;
+      }
+      
+    }
+  }
+
+}
+
+
+
+
 </style>

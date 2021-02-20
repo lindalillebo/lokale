@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <Header/>
+        <my-header></my-header>
 
         <form action="" class="form-container form-container__log-in margin-top">
 
@@ -16,25 +16,20 @@
 
             <button type="submit">logg inn</button>
 
-            <span class="small-text">Har du ingen bruker? Registrer deg <a href="add-venue.html">her</a></span>
+            <span class="small-text">Har du ingen bruker? Registrer deg <router-link to="/add-venue">her</router-link></span>
 
         </form>
-
-        <Footer/>
-
     </div>
 </template>
 
 
 <script>
-import Header from '..Header.vue'
-import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 export default {
     name: 'LoginPage',
      components: {
-        Header,
-        Footer
+        'my-header': Header
     }
 }
 </script>
@@ -42,4 +37,27 @@ export default {
 
 <style lang="scss">
     
+
+
+// Tablet
+@media (min-width: 600px) and (max-width: 1020px) {
+
+
+
+}
+
+
+// Desktop
+@media (min-width: 1020px) {
+
+
+
+}
+
+
+
+
+
+
+
 </style>

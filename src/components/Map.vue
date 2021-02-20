@@ -18,24 +18,24 @@
 <script>
 
 
-export default {
+// export default {
     
-      function initMap() {
+//       function initMap() {
 
-        const place = {  };
+//         const place = {  };
 
-        const map = new google.maps.Map(document.getElementById("map"), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 4,
-            mapId: '82b60e18eff0d34a',
-        });
+//         const map = new google.maps.Map(document.getElementById("map"), {
+//             center: {lat: -34.397, lng: 150.644},
+//             zoom: 4,
+//             mapId: '82b60e18eff0d34a',
+//         });
 
-        const marker = new google.maps.Marker({
-            position: place,
-            map: map,
-        });
-    }
-}
+//         const marker = new google.maps.Marker({
+//             position: place,
+//             map: map,
+//         });
+//     }
+// }
 
  
 </script>

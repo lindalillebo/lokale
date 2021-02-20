@@ -1,12 +1,12 @@
 <template>
     <div>
         
-        <Header/>
+        <my-header></my-header>
 
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a>&nbsp;&nbsp;&nbsp; <i class="fas fa-caret-right"></i></li>
-            <li><a href="venue-listing.html">Searches</a>&nbsp;&nbsp;&nbsp; <i class="fas fa-caret-right"></i></li>
-            <li><a href="#">.....</a></li>
+            <li><router-link to="/">Home</router-link>&nbsp;&nbsp;&nbsp; <i class="fas fa-caret-right"></i></li>
+            <li><router-link to="/listing">Searches</router-link>&nbsp;&nbsp;&nbsp; <i class="fas fa-caret-right"></i></li>
+            <li><router-link to="/venue-details">.....</router-link></li>
         </ul>
 
         <div class="venue__description">
@@ -78,53 +78,48 @@
                 </div>
 
                 <div class="sidebar">
-                    <a href="enquire-venue.html"><button class="btn--large">send forespørsel</button></a>
-                    <Map/>
+                    <router-link to="/enquire-venue"><button class="btn--large">send forespørsel</button></router-link>
+                    <my-map></my-map>
                 </div>
 
             </div>
 
         </div>
-
-        <Footer/>
-
     </div>
 </template>
 
 
 <script>
-import Header from '..Header.vue'
-import Footer from '../components/Footer'
+import Header from '../components/Header'
 import Map from '../components/Map'
 
 export default {
     name: 'VenueDetailsPage',
     components: {
-        Header,
-        Footer,
-        Map
+        'my-header': Header,
+        'my-map': Map
     }
 }
 
 
 
-var slideIndex = 1;
-showDivs(slideIndex);
+// var slideIndex = 1;
+// showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
+// function plusDivs(n) {
+//   showDivs(slideIndex += n);
+// }
 
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("slider__img");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
+// function showDivs(n) {
+//   var i;
+//   var x = document.getElementsByClassName("slider__img");
+//   if (n > x.length) {slideIndex = 1}
+//   if (n < 1) {slideIndex = x.length}
+//   for (i = 0; i < x.length; i++) {
+//     x[i].style.display = "none";  
+//   }
+//   x[slideIndex-1].style.display = "block";  
+// }
 
 
 
@@ -133,4 +128,125 @@ function showDivs(n) {
 
 <style lang="scss">
     
+.venue-spesific,
+.sidebar {
+  width: 90%;
+  display: block;
+  margin: auto;
+  h4 {
+    margin-top: 40px;
+  }
+  p {
+    font-weight: 500;
+    font-size: 0.9em;
+  }
+  .border-bottom {
+    width: 100%;
+    margin: 35px 0;
+  }
+} 
+
+.breadcrumb {
+  display: flex;
+  font-size: 0.8em;
+  margin: 30px 0 35px 50px;
+  li {
+    padding-right: 10px;
+  }
+}
+
+.slider__arrow-right,
+.slider__arrow-left {
+  color: $light;
+  display: none;
+}
+
+// Tablet
+@media (min-width: 600px) and (max-width: 1020px) {
+
+  .venue-description__heading {
+    float: left;
+    margin-left: 10px;
+    .horizontal {
+      justify-content: start;
+      width: 100%;
+      margin-left: 40px;
+      .venue__icons {
+        padding-left: 30px;
+      }
+    }
+  }
+}
+
+// Desktop
+@media (min-width: 1020px) {
+
+ .venue-description__heading {
+    float: left;
+    margin-left: 10px;
+    .horizontal {
+      justify-content: start;
+      width: 100%;
+      margin-left: 40px;
+      .venue__icons {
+        padding-left: 30px;
+      }
+    }
+  }
+
+  .grid {
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: 
+        "main sidebar"
+        "results sidebar";
+      .venue-spesific {
+        grid-area: "main";
+      }
+      .sidebar {
+          grid-area: "sidebar";
+      }
+      .search-container {
+        grid-area: "main";
+      }
+      .search-results {
+        grid-area: "results";
+      }
+      #map {
+          grid-area: "sidebar";
+      }
+  }
+
+  .grid-venue-listing {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "main sidebar"
+      "results sidebar";
+    .search-container {
+      grid-area: "main";
+    }
+    .search-results {
+      grid-area: "results";
+    }
+    #map {
+        grid-area: "sidebar";
+    }
+}
+
+  .grid-venue-spesific {
+    max-width: 1000px;
+  }
+
+}
+
+
+
+
+
+
 </style>

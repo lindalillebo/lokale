@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Header/>
+        <my-header></my-header>
     <div>
         <h2>send en booking forespørsel til .....</h2>
     </div>
@@ -74,20 +74,17 @@
 
 
     </form>
-    <Footer/>
     </div>
 </template>
 
 
 <script>
-import Header from '..Header.vue'
-import Footer from '../components/Footer.vue'
+import Header from '../components/Header'
 
 export default {
     name: 'EnquireVenuePage',
      components: {
-        Header,
-        Footer
+        'my-header': Header
     }
 }
 </script>
@@ -95,4 +92,27 @@ export default {
 
 <style lang="scss">
     
+
+
+
+// Tablet
+@media (min-width: 600px) and (max-width: 1020px) {
+
+
+
+}
+
+
+// Desktop
+@media (min-width: 1020px) {
+
+
+
+}
+
+
+
+
+
+
 </style>

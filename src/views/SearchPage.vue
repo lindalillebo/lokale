@@ -28,8 +28,8 @@
         <h1>finn lokale til ditt <br />&nbsp;&nbsp;&nbsp;arrangement!</h1>
         <div class="hero__search">
           <form>
-            <input type="text" placeholder="område" />
-            <select name="events" id="events" required>
+            <input type="text" placeholder="område" v-model="areaSearch"/>
+            <select name="events" id="events" v-model="selected">
               <option value="0">type begivenhet</option>
               <option value="bedriftsarrangement">Bedriftsarrangement</option>
               <option value="bryllup">Bryllup</option>
@@ -46,7 +46,7 @@
               <option value="møte">Møte</option>
               <option value="utstilling">Utstilling</option>
             </select>
-            <input type="number" placeholder="antall personer" />
+            <input type="number" placeholder="antall personer" v-model="numberSearch"/>
             <button id="btn--round" type="submit">
               <i class="fas fa-search"></i>
             </button>
@@ -59,7 +59,7 @@
 
       <div class="venue-links">
         <div class="venue-link-1">
-          <router-link to="/">
+          <router-link to="/listing-page?venue-type_containss=servering">
             <img
               class="cover"
               src="../assets/robert-mathews-xXaLfz6V9rQ-unsplash.jpg"
@@ -69,7 +69,7 @@
           </router-link>
         </div>
         <div class="venue-link-2">
-          <router-link to="/">
+          <router-link to="/listing-page?venue-type_containss=fest">
             <img
               class="cover"
               src="../assets/pexels-thibault-trillet-167491.jpg"
@@ -79,7 +79,7 @@
           </router-link>
         </div>
         <div class="venue-link-3">
-         <router-link to="/">
+         <router-link to="/listing-page?venue-type_containss=møtekonferanse">
             <img
               class="cover"
               src="../assets/pexels-pixabay-221537.jpg"
@@ -89,7 +89,7 @@
          </router-link>
         </div>
         <div class="venue-link-4">
-         <router-link to="/">
+         <router-link to="/listing-page?venue-type_containss=bryllup">
             <img
               class="cover"
               src="../assets/james-bold-174ZYtxCtr4-unsplash.jpg"
@@ -104,11 +104,28 @@
 </template>
 
 <script>
+import axios from "axios";
 
 export default {
   name: "SearchPage",
   components: {
   },
+   data() {
+    return {
+      search: '',
+      query: this.$route.params.query,
+    };
+  },
+   methods: {
+      mounted() {
+        axios
+          .get("http://localhost:1337/venues?venuename_containss=" + this.query)
+          .then((response) => {
+            this.venues = response.data;
+            console.log(response);
+          });
+      },
+   }
 };
 </script>
 

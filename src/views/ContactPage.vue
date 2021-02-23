@@ -7,7 +7,7 @@
             <h2>kontakt oss</h2>
         </div>
 
-        <form action="" class="form-container form-container__contact">
+        <form action="" class="form-container form-container__contact" @submit.prevent="handleSubmit">
             <h4>Har du noen spørsmål? <br> Send oss en melding her:</h4>
 
             <input type="text" name="name" placeholder="ditt navn">
@@ -20,6 +20,14 @@
             <span class="error">Dette feltet kan ikke være tomt</span>
 
             <button type="submit">send</button>
+            <modal
+                class="modal"
+                name="my-modal"
+                @click.self="$modal.hide('my-modal')"
+                :adaptive="true"
+            >
+                <p>Takk for din melding!</p>
+            </modal>
 
         </form>
     </div>
@@ -33,7 +41,13 @@ export default {
     name: 'ContactPage',
      components: {
         'my-header': Header
+    },
+    methods: {
+        handleSubmit() {
+            this.$modal.show('my-modal')
+        }
     }
+    
 }
 </script>
 

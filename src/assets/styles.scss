@@ -77,7 +77,17 @@ button {
   border: none;
   border-radius: 5px;
   position: relative;
-  padding: 5px 15px;
+  padding: 7px 20px;
+  &:hover {
+    border-radius: 0;
+  }
+  &:active {
+    background-color: darken($golden, 10%);
+  }
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 button:after {
@@ -92,14 +102,6 @@ button:after {
   margin: 0;
 }
 
-button:hover {
-  border-radius: 0;
-}
-
-button:active {
-  background-color: darken($golden, 10%);
-}
-
 button:hover:after {
   top: 0;
   left: 0;
@@ -108,13 +110,6 @@ button:hover:after {
   transition: all 0.2s ease;
 }
 
-#btn--round:hover:after {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  transition: all 0.2s ease;
-}
 
 #btn--round {
   display: block;
@@ -124,6 +119,13 @@ button:hover:after {
   &:hover {
     border-radius: 0;
     transition: all 0.2s ease;
+    &:after {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      transition: all 0.2s ease;
+    }
   }
 }
 

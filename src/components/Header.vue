@@ -1,23 +1,28 @@
 <template>
-        <nav>
+    <div>
+        <nav class="nav-border">
             <div id="logo">
                 <router-link to="/">
                     <img src="../assets/logo-dark-text.svg" alt="logo-dark-text">
                 </router-link>
             </div>
-            <div id="toggle">
-                <img @click="toggledNav = !toggledNav" src="../assets/hamburger.svg" alt="hamburger menu" id="hamburger">
-                <img src="../assets/cross.svg" alt="cross" id="cross">
+            <div @click="toggledNav = !toggledNav" id="toggle">
+                <img v-if="!toggledNav" src="../assets/hamburger.svg" alt="hamburger menu">
+                <img v-else src="../assets/cross.svg" alt="cross" class="cross">
             </div>
-            <ul id="nav-links">
+            <ul :class="{open: toggledNav}" id="nav-links">
                 <li>
                     <router-link to="/add-venue" class="add-venue">registrer lokale</router-link>
                 </li>
-                <li>
-                    <router-link to="/log in"><button>logg inn</button></router-link>
+                <li v-if="loggedIn">
+                  <router-link to="/"><button @click="logout">logg ut</button></router-link>
+                </li>
+                <li v-else>
+                    <router-link to="/login"><button>logg inn</button></router-link>
                 </li>
             </ul>
         </nav>
+    </div>
 </template>
 
 <script>
@@ -26,15 +31,26 @@
 export default {
     name: 'Header',
       data () {
-      return {
-        toggledNav: false
-      }
+        return {
+          toggledNav: false
+        }
       },
       watch: {
         '$route' () {
           this.toggledNav = false
         }
-      }
+      },
+      computed: {
+        loggedIn: function() {
+          return this.$store.getters.isAuthenticated
+        }
+      },
+      methods: {
+        async logout() {
+          await this.$store.dispatch('LogOut')
+          this.$router.push('/login')
+        }
+      },
 }
 
 
@@ -57,20 +73,26 @@ nav {
     margin: 15px;
     width: 38px;
   }
-  #cross {
-    display: none;
+  .cross {
+    height: 30px;
   }
   #nav-links {
     display: none;
-    margin-bottom: 0;
+    margin: 50px auto 30px;
+    font-size: 1.3em;
+    .add-venue {
+      color: $dark;
+      font-weight: 700;
+    }
     a {
       display: block;
       color: $light;
-      padding: 15px;
+      padding: 20px;
+      text-align: center;
     }
-    &.toggle-menu {
-      display: inline;
-    }
+  }
+  .open {
+    display: inline-block !important;
   }
 }
 
@@ -91,18 +113,19 @@ ul {
   nav {
     #logo {
       width: 120px;
-      margin: 18px 0 15px 30px;
+      margin: 15px 0 15px 30px;
     }
     #toggle {
       display: none;
     }
     #nav-links {
-      display: block;
-      margin-bottom: 0;
+      display: block !important;
+      margin: 14px 0 15px 0;
+      font-size: 1.2em;
       li {
         font-weight: 500;
         float: right;
-        a {
+        button {
           padding: 5px 15px;
         }
         .add-venue {
@@ -139,8 +162,9 @@ ul {
       display: none;
     }
     #nav-links {
-      display: block;
-      margin-bottom: 0;
+      display: block !important;
+      margin: 15px 0 15px 0;
+      font-size: 1.2em;
       li {
         font-weight: 500;
         float: right;

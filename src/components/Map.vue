@@ -1,46 +1,64 @@
 <template>
-    <div>
-        <div id="map">
-            <iframe
-                width="600"
-                height="450"
-                style="border:0"
-                loading="lazy"
-                allowfullscreen
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBzbFAN1xNxA2nxHJMz7-F3Dad5P7pkuTk
-                &q=Space+Needle,Seattle+WA">
-            </iframe>
-        </div>
-    </div>
+  <div>
+    <google-map
+      id="map"
+      ref="map"
+      :center="defaultMapOptions.center"
+      :zoom="defaultMapOptions.zoom"
+    >
+      <google-map-marker
+        v-for="(marker, index) in markersList"
+        :key="index"
+        :title="marker.title"
+        :position="marker.position"
+        @click="center=marker"
+      ></google-map-marker>
+    </google-map>
+  </div>
 </template>
 
-
 <script>
-
-
-// export default {
-    
-//       function initMap() {
-
-//         const place = {  };
-
-//         const map = new google.maps.Map(document.getElementById("map"), {
-//             center: {lat: -34.397, lng: 150.644},
-//             zoom: 4,
-//             mapId: '82b60e18eff0d34a',
-//         });
-
-//         const marker = new google.maps.Marker({
-//             position: place,
-//             map: map,
-//         });
-//     }
-// }
-
- 
+// import func from '../../vue-temp/vue-editor-bridge';
+export default {
+  data() {
+    return {
+      markersList: [],
+      defaultMapOptions: {
+        zoom: 11,
+        minZoom: 3,
+        currentPlace: null,
+        center: {
+          lat: 62.472229,
+          lng: 6.149482,
+        },
+      },
+    };
+  },
+  methods: {
+    mounted () {
+    //   this.findPlace();
+    // },
+    // setPlace(place) {
+    //   this.currentPlace = place;
+    // },
+    // findPlace: function() {
+    //   navigator.geolocation.getCurrentPosition(posistion => {
+    //     this.center = {
+    //       lat: posistion.coords.latitude,
+    //       lng: posistion.coords.longitude
+    //     };
+    //   });
+    }
+  }
+};
 </script>
 
+<style lang="scss" scoped>
+   button::after {
+     border: none;
+   }
+   button:hover {
+     border: none;
+   }
 
-<style lang="scss">
-    
 </style>

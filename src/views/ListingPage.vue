@@ -12,13 +12,8 @@
                 ref="autocomplete"
                 id="city-search"
                 name="city-search"
-                v-model="city"
+                v-model="venues.city"
               />
-              <ul>
-                <li v-for="(place, i) in placeList" :key="i">
-                  {{ place }}
-                </li>
-              </ul>
             </div>
             <div>
               <label for="number-guests">Antall gjester</label>
@@ -26,7 +21,7 @@
                 type="number"
                 id="number-guests"
                 name="number-guests"
-                v-model="number"
+                v-model="venues.number"
               />
             </div>
           </div>
@@ -43,7 +38,7 @@
                   id="event1"
                   name="event1"
                   value="bedriftsarrangement"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -55,7 +50,7 @@
                   id="event2"
                   name="event2"
                   value="bryllup"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -67,7 +62,7 @@
                   id="event3"
                   name="event3"
                   value="dåp / navnedag / konfirmasjon"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -79,7 +74,7 @@
                   id="event4"
                   name="event4"
                   value="fest"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -91,7 +86,7 @@
                   id="event5"
                   name="event5"
                   value="forestilling / konsert"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -103,7 +98,7 @@
                   id="event6"
                   name="event6"
                   value="julebord"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -115,7 +110,7 @@
                   id="event7"
                   name="event7"
                   value="kurs / konferanse"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -127,7 +122,7 @@
                   id="event8"
                   name="event8"
                   value="middag / lunsj"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -139,7 +134,7 @@
                   id="event9"
                   name="event9"
                   value="møte"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -151,7 +146,7 @@
                   id="event10"
                   name="event10"
                   value="utstilling"
-                  v-model="checkedEvent"
+                  v-model="venues.checkedEvent"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -167,7 +162,7 @@
                   id="amenity1"
                   name="amenity1"
                   value="wifi"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -179,7 +174,7 @@
                   id="amenity2"
                   name="amenity2"
                   value="tilbyr alkohol"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -191,7 +186,7 @@
                   id="amenity3"
                   name="amenity3"
                   value="tilbyr matservering"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -203,7 +198,7 @@
                   id="amenity4"
                   name="amenity4"
                   value="medbragt alkohol tillat"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -215,7 +210,7 @@
                   id="amenity5"
                   name="amenity5"
                   value="medbragt mat tillatt"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -227,7 +222,7 @@
                   id="amenity6"
                   name="amenity6"
                   value="dansegulv"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -239,7 +234,7 @@
                   id="amenity7"
                   name="amenity7"
                   value="rullestolvennlig"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -251,7 +246,7 @@
                   id="amenity8"
                   name="amenity8"
                   value="scene"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -263,7 +258,7 @@
                   id="amenity9"
                   name="amenity9"
                   value="prosjektor / TV"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -275,7 +270,7 @@
                   id="amenity10"
                   name="amenity10"
                   value="selvbetjent kjøkken"
-                  v-model="checkedAmenity"
+                  v-model="venues.checkedAmenity"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -288,7 +283,7 @@
             type="text"
             id="venue-name"
             name="venue-name"
-            v-model="venueName"
+            v-model="venues.venuename"
           />
         </form>
       </div>
@@ -298,51 +293,7 @@
         <span class="page-numbers">Fant {{ totalsResults }} resultat</span>
 
         <div class="cards">
-          <div v-for="venue in venues" :key="venue.id" class="card">
-            <router-link to="'/venue-details/' + venue.id">
-              <div>
-                <img
-                  class="card__img"
-                  v-bind:src="venue | imageFilter"
-                  style="width:100%"
-                />
-              </div>
-              <div class="card__description">
-                <div class="card--horizontal">
-                  <span class="card__venue-name">{{ venue.venuename }}</span>
-                  <span class="card__accessible-icon"
-                    ><i class="fab fa-accessible-icon"></i
-                  ></span>
-                </div>
-                <div class="card--horizontal">
-                  <p>
-                    <b
-                      >Fra
-                      <span class="card__venue-price">{{
-                        venue.fromprice
-                      }}</span
-                      >kr</b
-                    >
-                    per time
-                  </p>
-                  <div class="card__seating">
-                    <div>
-                      <i class="fas fa-chair"></i
-                      ><span class="card__seating-number">{{
-                        venue.seating
-                      }}</span>
-                    </div>
-                    <div>
-                      <i class="fas fa-male"></i
-                      ><span class="card__standing-number">{{
-                        venue.standing
-                      }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </router-link>
-          </div>
+          <card v-for="venue in venues" :key="venue.id" v-bind:venue="venue"></card>
         </div>
       </div>
 
@@ -357,80 +308,45 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapActions } from "vuex";
 import Header from "../components/Header";
 import Map from "../components/Map";
+import Card from "../components/Card";
 
 export default {
   name: "ListingPage",
   components: {
     "my-header": Header,
     "my-map": Map,
+    "card": Card,
   },
   data() {
     return {
-      search: "",
-      location: "",
-      placeList: [],
-      service: null,
       venues: [],
-      query: "vegsund", //this.$route.params.query,
+      query: this.$route.query
     };
   },
-  metaInfo() {
-    return {
-      script: [
-        {
-          src: `https://maps.googleapis.com/maps/api/js?key=<AIzaSyBzbFAN1xNxA2nxHJMz7-F3Dad5P7pkuTk>&libraries=places`,
-          async: true,
-          defer: true,
-          callback: () => this.MapsInit(),
-        },
-      ],
-    };
+  async mounted() {
+    
+  },
+  ...mapActions(['GetVenues']),
+  computed: {
+    totalsResults() {
+      return this.venues.length;
+    },
+    filteredVenues() {
+      return this.venues.filter(() => true);
+    },
+  },
+  filters: {
+    imageFilter(value) {
+      return `${process.env.VUE_APP_STRAPI_URL}${value?.gallery[0]?.formats?.small?.url}`;
+    },
   },
   methods: {
-    MapsInit() {
-      this.service = new window.google.maps.places.AutocompleteService();
+    hasFeature(feature) {
+      return this.venues.features.some((item) => item.id === feature.id);
     },
-    displayPlaces(predictions, status) {
-      if (status !== window.google.maps.places.PlacesServiceStatus.OK) {
-        this.placeList = [];
-        return;
-      }
-      this.placeList = predictions.map(prediction => prediction.description);
-    },
-    mounted() {
-      axios
-        .get("http://localhost:1337/venues?venuename_containss=" + this.query)
-        .then((response) => {
-          this.venues = response.data;
-          console.log(response);
-        });
-    },
-    computed: {
-      totalsResults() {
-        return this.venues.length;
-      },
-      filteredVenues() {
-        return this.venues.filter(() => true);
-      },
-    },
-    filters: {
-      imageFilter(value) {
-        return `${process.env.VUE_APP_STRAPI_URL}${value?.gallery[0]?.formats?.small?.url}`;
-      },
-    },
-    watch: {
-      location (newValue) {
-        if (newValue) {
-          this.service.getPlacePredictions({
-            input: this.location,
-            types: ["(cities)"]
-          }, this.displayPlaces)
-        }
-      }
-    }
   },
 };
 </script>
@@ -445,49 +361,17 @@ export default {
     margin-bottom: 10px;
   }
 }
-
-.search-results {
-  background-color: $light;
-  margin-bottom: -100px;
-  padding-top: 20px;
-  .card {
-    width: 90%;
-    display: block;
-    margin: 60px auto;
-    display: flex;
-    flex-direction: column;
-    .card__description {
-      display: flex;
-      flex-direction: column;
-    }
-    .card--horizontal {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px 0 5px;
-      p {
-        margin: 0;
-      }
-      .card__seating {
-        display: flex;
-        flex-direction: row;
-        i {
-          padding: 0 7px;
-        }
-      }
-    }
-  }
-  .page-numbers {
-    font-weight: 500;
-    font-size: 0.8em;
-    margin-left: 20px;
-  }
-  .pagination {
-    font-weight: 700;
-    text-align: center;
-    padding-bottom: 30px;
-    a {
-      padding: 0 5px;
-    }
+.page-numbers {
+  font-weight: 500;
+  font-size: 0.8em;
+  margin-left: 20px;
+}
+.pagination {
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 30px;
+  a {
+    padding: 0 5px;
   }
 }
 

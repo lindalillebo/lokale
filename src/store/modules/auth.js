@@ -1,56 +1,49 @@
 import axios from 'axios'
-import strapi from '../../util/strapi'
 import Cookies from 'js-cookie'
+import router from '../../router'
 
 const state = {
-    user: null,
-    venue: null
+    user: null
 };
 const getters = {
     isAuthenticated: state => !!state.user,    
-    StateVenue: state => state.venue,
     StateUser: state => state.user,
 };
 const actions = {
     async Register({dispatch}, form) {
-        await axios.post('/add-venue', form)
+        let venueData = new FormData();
+        let response = await axios.post('/auth/local/register', { 
+            username: form.email, 
+            email: form.email, 
+            password: form.password 
+        });
 
-        let UserForm = new FormData()
+        venueData.append('email', form.email)
+        venueData.append('password', form.password)
+        venueData.append('repeatPassword', form.repeat_password)
+        venueData.append('name', form.name)
+        venueData.append('venuename', form.venuename)
+        venueData.append('website', form.website)
+        venueData.append('number', form.number)
+        venueData.append('description', form.description)
+        venueData.append('pricing', form.pricing)
+        venueData.append('fromprice', form.fromprice)
+        venueData.append('seating', form.seating)
+        venueData.append('standing', form.standing)
+        venueData.append('address', form.address)
+        venueData.append('gallery', form.gallery)
+        venueData.append('venue_types', form.venue_types)
+        venueData.append('features', form.features)
 
-        UserForm.append('email', form.email)
-        UserForm.append('password', form.password)
-        UserForm.append('repeatPassword', form.repeat_password)
-        UserForm.append('name', form.name)
-        UserForm.append('venuename', form.venuename)
-        UserForm.append('website', form.website)
-        UserForm.append('number', form.number)
-        UserForm.append('description', form.description)
-        UserForm.append('pricing', form.pricing)
-        UserForm.append('fromprice', form.fromprice)
-        UserForm.append('seating', form.seating)
-        UserForm.append('standing', form.standing)
-        UserForm.append('address', form.address)
-        UserForm.append('gallery', form.gallery)
-        UserForm.append('venue_types', form.venue_types)
-        UserForm.append('features', form.features)
+        await axios.post('/venues', venueData);
 
-        await dispatch('LogIn', UserForm)
+        await dispatch('LogIn', response.user)
     },
-    async LogIn({commit}, User) {
-        const response = await strapi.login('/login', User)
-        await commit('setUser', response.User)
-    },
-    async CreateVenue({dispatch}, venue) {
-        await axios.post('venue', venue)
-        await dispatch('GetVenues')
-    },
-    async GetVenues({commit}){
-        let response = await axios.get('/venues')
-        commit('setVenues', response.data)
-    },
-    async DeleteVenue({commit}){
-        let response = await axios.delete('/venues')
-        commit('deleteVenues', response.data)
+    async LogIn({commit}, user) {
+        const response = await axios.post('/login', user);
+        await commit('setUser', response.user)
+
+        router.push("/");
     },
     async LogOut({commit}){
         let user = null
@@ -61,9 +54,6 @@ const mutations = {
     setUser(state, user){
         state.user = user
         Cookies.set('user', user)
-    },
-    setVenues(state, venues){
-        state.venues = venues
     },
     logout(state){
         state.user = null

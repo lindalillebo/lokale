@@ -7,21 +7,34 @@
             <img src="../assets/logo-golden-text.svg" alt="logo-golden-text" />
           </router-link>
         </div>
-        <div id="toggle">
+        <div @click="toggledNav = !toggledNav" id="toggle">
           <img
+            v-if="!toggledNav"
             src="../assets/hamburger.svg"
             alt="hamburger menu"
             id="hamburger"
           />
-          <img src="../assets/cross.svg" alt="cross" id="cross" />
+          <img v-else src="../assets/cross.svg" alt="cross" class="cross" />
         </div>
-        <ul id="nav-links">
-          <li>
+        <ul :class="{ open: toggledNav }" id="nav-links">
+          <li v-if="loggedIn">
+            <a href="" @click.prevent="goToEdit" class="add-venue light"
+              >mitt lokale</a
+            >
+          </li>
+          <li v-if="loggedIn">
+            <router-link to="/"
+              ><button @click="logout">
+                logg ut
+              </button></router-link
+            >
+          </li>
+          <li v-if="!loggedIn">
             <router-link to="/register" class="add-venue light"
               >registrer lokale</router-link
             >
           </li>
-          <li>
+          <li v-if="!loggedIn">
             <router-link to="/login"><button>logg inn</button></router-link>
           </li>
         </ul>
@@ -30,16 +43,32 @@
         <h1>finn lokale til ditt <br />&nbsp;&nbsp;&nbsp;arrangement!</h1>
         <div class="hero__search">
           <form @submit.prevent="onSubmit">
-            <input type="text" placeholder="område" v-model="address" tabindex="0" autofocus />
-            <select name="select-event" id="select-event" v-model="venueType" tabindex="1">
-              <option value="" selected>Type begivenhet</option>
-              <option v-for="item in allVenueTypes" v-bind:value="item.id" :key="'venue_type_' + item.id">{{ item.name }}</option>
+            <input
+              type="text"
+              placeholder="område"
+              v-model="address"
+              tabindex="1"
+              autofocus
+            />
+            <select
+              name="select-event"
+              id="select-event"
+              v-model="venueType"
+              tabindex="2"
+            >
+              <option :value="null" disabled>type begivenhet</option>
+              <option
+                v-for="item in allVenueTypes"
+                v-bind:value="item.id"
+                :key="'venue_type_' + item.id"
+                >{{ item.name }}</option
+              >
             </select>
             <input
               type="number"
               placeholder="antall personer"
               v-model="noOfPeople"
-              tabindex="2"
+              tabindex="3"
             />
             <button id="btn--round" type="submit">
               <i class="fas fa-search"></i>
@@ -52,7 +81,7 @@
       <h2>hvilket lokale trenger du?</h2>
       <div class="venue-links">
         <div class="venue-link-1">
-          <router-link to="/listing/?venue-type_containss=servering">
+          <router-link to="/listing?venueType=8">
             <img
               class="cover"
               src="../assets/robert-mathews-xXaLfz6V9rQ-unsplash.jpg"
@@ -62,7 +91,7 @@
           </router-link>
         </div>
         <div class="venue-link-2">
-          <router-link to="/listing/?venue-type_containss=fest">
+          <router-link to="/listing?venueType=4">
             <img
               class="cover"
               src="../assets/pexels-thibault-trillet-167491.jpg"
@@ -72,7 +101,7 @@
           </router-link>
         </div>
         <div class="venue-link-3">
-          <router-link to="/listing/?venue-type_containss=møtekonferanse">
+          <router-link to="/listing?venueType=7">
             <img
               class="cover"
               src="../assets/pexels-pixabay-221537.jpg"
@@ -82,7 +111,7 @@
           </router-link>
         </div>
         <div class="venue-link-4">
-          <router-link to="/listing/?venue-type_containss=bryllup">
+          <router-link to="/listing?venueType=1">
             <img
               class="cover"
               src="../assets/james-bold-174ZYtxCtr4-unsplash.jpg"
@@ -108,13 +137,30 @@ export default {
       address: "",
       venueType: null,
       allVenueTypes: [],
+      toggledNav: false,
     };
+  },
+  watch: {
+    $route() {
+      this.toggledNav = false;
+    },
   },
   async mounted() {
     const response = await axios.get("/venue-types");
     this.allVenueTypes = response.data;
   },
+  computed: {
+    loggedIn: function() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
   methods: {
+    async logout() {
+      await this.$store.dispatch("logOut");
+    },
+    async goToEdit() {
+      await this.$store.dispatch("goToProfile");
+    },
     onSubmit() {
       this.$router.push({
         path: "listing",
@@ -132,6 +178,7 @@ export default {
 <style lang="scss">
 .hero {
   background: url("../assets/background-img.jpg") no-repeat center center;
+  -webkit-background-size: cover;
   height: 100vh;
   position: relative;
   background-size: cover;
@@ -214,6 +261,11 @@ nav {
       display: block;
       color: $light;
       padding: 15px;
+    }
+    li {
+      .light {
+        color: $light;
+      }
     }
     &.toggle-menu {
       display: inline;
@@ -310,6 +362,9 @@ ul {
         a {
           padding: 5px 15px;
         }
+        .light {
+          color: $light;
+        }
         .add-venue {
           padding-top: 9px;
           &:hover {
@@ -369,7 +424,7 @@ ul {
   }
 
   .container {
-    max-width: 900px;
+    max-width: 1000px;
     h2 {
       text-align: start;
     }

@@ -16,12 +16,18 @@ axios.interceptors.response.use(undefined, function(error) {
   if (error) {
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
+      console.log("Unauthorized, loggin out...");
+
       originalRequest._retry = true;
-      store.dispatch("LogOut");
-      return router.push("/login");
+      return store.dispatch("logOut");
     }
   }
 });
+
+const token = localStorage.getItem('authToken')
+if (token) {
+  axios.defaults.headers.common['Authorization'] = "Bearer " + token
+}
 
 Vue.component("ValidationProvider", ValidationProvider);
 Vue.component("ValidationObserver", ValidationObserver);

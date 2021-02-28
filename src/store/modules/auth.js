@@ -1,65 +1,103 @@
-import axios from "axios"
-import Cookies from "js-cookie"
-import router from "../../router"
+import axios from "axios";
+import router from "../../router";
+import qs from "qs";
 
 const state = {
-    user: null
+  user: "",
+  authToken: localStorage.getItem("authToken") || ""
 };
 const getters = {
-    isAuthenticated: state => !!state.user,    
-    StateUser: state => state.user,
+  user: state => state.user,
+  isAuthenticated: (state) => !!state.user,
+  authToken: (state) => state.user?.jwt,
+  identifier: (state) => state.user?.user.id,
+  username: (state) => state.user?.user.username,
 };
 const actions = {
-    async Register({dispatch}, form) {
-        let venueData = new FormData();
-        let response = await axios.post("/auth/local/register", { 
-            username: form.email, 
-            email: form.email, 
-            password: form.password 
-        });
+  async register({ dispatch }, form) {
+    console.log("Registering...", form);
 
-        venueData.append("email", form.email)
-        venueData.append("password", form.password)
-        venueData.append("repeatPassword", form.repeat_password)
-        venueData.append("name", form.name)
-        venueData.append("venuename", form.venuename)
-        venueData.append("website", form.website)
-        venueData.append("number", form.number)
-        venueData.append("description", form.description)
-        venueData.append("pricing", form.pricing)
-        venueData.append("fromprice", form.fromprice)
-        venueData.append("seating", form.seating)
-        venueData.append("standing", form.standing)
-        venueData.append("address", form.address)
-        venueData.append("gallery", form.gallery)
-        venueData.append("venue_types", form.venue_types)
-        venueData.append("features", form.features)
+    let venueData = new FormData();
 
-        await axios.post("/venues", venueData);
+    let response = await axios.post("/auth/local/register", {
+      username: form.email,
+      email: form.email,
+      password: form.password,
+    });
 
-        await dispatch("LogIn", response.user)
-    },
-    async LogIn({commit}, user) {
-        const response = await axios.post("/login", user);
-        await commit("setUser", response.user)
+    console.log("New user registered...", response);
 
-        router.push("/");
-    },
-    async LogOut({commit}){
-        let user = null
-        commit("logout", user)
+    // eslint-disable-next-line no-unused-vars
+    const { password, files, ...formData } = form;
+    formData.users_permissions_user = response.data.user.id;
+
+    venueData.append("data", JSON.stringify(formData));
+
+    if (files.length > 0) {
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        venueData.append(`files.gallery`, file, file.name);
+      }
     }
+
+    await axios.post("/venues", venueData);
+
+    await dispatch("logIn", { username: response.data.user.email, password });
+  },
+  async logIn({ commit, dispatch }, user) {
+    console.log("Logging in...", user);
+
+    const response = await axios.post("/auth/local", {
+      identifier: user.username,
+      password: user.password,
+    });
+
+    localStorage.setItem("authToken", response.data.jwt);
+    axios.defaults.headers.common['Authorization'] = "Bearer " + response.data.jwt;
+
+    await commit("setUser", response.data);
+    await dispatch("goToProfile");
+  },
+  async logOut({ commit }) {
+
+    localStorage.removeItem('authToken')
+    delete axios.defaults.headers.common['Authorization'];
+
+    commit("logout");
+    router.push("/login");
+  },
+  async goToProfile({ getters }) {
+    const query = qs.stringify({
+      _where: [{ "users_permissions_user.id": getters.identifier }],
+    });
+    const venueResponse = await axios.get(`/venues?${query}`);
+
+    router.push(`/edit/${venueResponse.data[0]?.id}`);
+  },
+  async deleteAccount({ dispatch }) {
+    const query = qs.stringify({
+      _where: [{ "users_permissions_user.id": getters.identifier }],
+    });
+
+    const venueResponse = await axios.get(`/venues?${query}`);
+
+    await axios.delete(`/venues/${venueResponse.data[0]?.id}`);
+    await axios.delete(`/users/${venueResponse.data[0]?.users_permissions_user.id}`);
+    
+    dispatch("logOut");
+  },
 };
 const mutations = {
-    setUser(state, user){
-        state.user = user
-        Cookies.set("user", user)
-    },
-    logout(state){
-        state.user = null
-        state.venues = null
-    },
+  setUser(state, user) {
+    state.user = user;
+    state.authToken = user.jwt;
+  },
+  logout(state) {
+    state.user = null;
+    state.authToken = null;
+  },
 };
+
 export default {
   state,
   getters,

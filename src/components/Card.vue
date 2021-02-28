@@ -120,16 +120,6 @@ export default {
 @media (min-width: 600px) and (max-width: 1020px) {
   .search-results {
     margin-bottom: -120px;
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      .card {
-        width: 30%;
-        .card__img {
-          height: 200px;
-        }
-      }
-    }
   }
 }
 
@@ -137,16 +127,6 @@ export default {
 @media (min-width: 1020px) {
   .search-results {
     margin-bottom: -150px;
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      .card {
-        width: 30%;
-        .card__img {
-          height: 200px;
-        }
-      }
-    }
   }
 }
 </style>

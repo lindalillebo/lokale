@@ -1,64 +1,77 @@
 <template>
-    <div>
-        <nav class="nav-border">
-            <div id="logo">
-                <router-link to="/">
-                    <img src="../assets/logo-dark-text.svg" alt="logo-dark-text">
-                </router-link>
-            </div>
-            <div @click="toggledNav = !toggledNav" id="toggle">
-                <img v-if="!toggledNav" src="../assets/hamburger.svg" alt="hamburger menu">
-                <img v-else src="../assets/cross.svg" alt="cross" class="cross">
-            </div>
-            <ul :class="{open: toggledNav}" id="nav-links">
-                <li>
-                    <router-link to="/register" class="add-venue">registrer lokale</router-link>
-                </li>
-                <li v-if="loggedIn">
-                  <router-link to="/"><button @click="logout">logg ut</button></router-link>
-                </li>
-                <li v-else>
-                    <router-link to="/login"><button>logg inn</button></router-link>
-                </li>
-            </ul>
-        </nav>
-    </div>
+  <div>
+    <nav class="nav-border">
+      <div id="logo">
+        <router-link to="/">
+          <img src="../assets/logo-dark-text.svg" alt="logo-dark-text" />
+        </router-link>
+      </div>
+      <div @click="toggledNav = !toggledNav" id="toggle">
+        <img
+          v-if="!toggledNav"
+          src="../assets/hamburger.svg"
+          alt="hamburger menu"
+        />
+        <img v-else src="../assets/cross.svg" alt="cross" class="cross" />
+      </div>
+      <ul :class="{ open: toggledNav }" id="nav-links">
+          <li v-if="loggedIn">
+            <a href=""  @click.prevent="goToEdit" class="add-venue"
+              >mitt lokale</a
+            >
+          </li>
+          <li v-if="loggedIn">
+            <router-link to="/"
+              ><button @click="logout">
+                logg ut
+              </button></router-link
+            >
+          </li>
+          <li v-if="!loggedIn">
+            <router-link to="/register" class="add-venue"
+              >registrer lokale</router-link
+            >
+          </li>
+          <li v-if="!loggedIn">
+            <router-link to="/login"
+              ><button>logg inn</button></router-link
+            >
+          </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
-
-
 export default {
-    name: "Header",
-      data () {
-        return {
-          toggledNav: false
-        }
-      },
-      watch: {
-        "$route" () {
-          this.toggledNav = false
-        }
-      },
-      computed: {
-        loggedIn: function() {
-          return this.$store.getters.isAuthenticated
-        }
-      },
-      methods: {
-        async logout() {
-          await this.$store.dispatch("LogOut")
-          this.$router.push("/login")
-        }
-      },
-}
-
-
+  name: "Header",
+  data() {
+    return {
+      toggledNav: false,
+    };
+  },
+  watch: {
+    $route() {
+      this.toggledNav = false;
+    },
+  },
+  computed: {
+    loggedIn: function() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
+  methods: {
+    async goToEdit() {
+      await this.$store.dispatch("goToProfile");
+    },
+    async logout() {
+      await this.$store.dispatch("logOut");
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-    
-
 // Navigation
 
 nav {
@@ -109,7 +122,6 @@ ul {
 
 // Tablet
 @media (min-width: 600px) and (max-width: 1020px) {
-
   nav {
     #logo {
       width: 120px;
@@ -146,14 +158,11 @@ ul {
       }
     }
   }
-
 }
-
 
 // Desktop
 @media (min-width: 1020px) {
-
- nav {
+  nav {
     #logo {
       width: 120px;
       margin: 18px 0 15px 30px;
@@ -189,10 +198,5 @@ ul {
       }
     }
   }
-
 }
-
-
-
-
 </style>

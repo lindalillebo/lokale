@@ -13,5 +13,8 @@ export default {
     "my-footer": Footer,
   },
   name: "App",
+  created() {
+
+  },
 };
 </script>

@@ -37,6 +37,15 @@ export default {
   },
   methods: {
     mounted() {
+      this.map = new Map(
+        this.$refs.map,
+        this.platform.createDefaultLayers().normal.map,
+        {
+          zoom: 10, 
+          center: { lng: this.lng, lat: this.lat}
+        }
+      )
+
         this.findPlace();
       },
       setPlace(place) {

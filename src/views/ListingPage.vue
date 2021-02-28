@@ -1,7 +1,7 @@
 <template>
   <div>
     <my-header></my-header>
-    <div class="grid-venue-listing">
+    <div>
       <div class="search-container">
         <form class="form-container">
           <div class="flex">
@@ -78,11 +78,10 @@
           />
         </form>
       </div>
-      <my-map></my-map>
 
+    <div class="container-serach-results">
       <div class="search-results">
         <span class="page-numbers">Fant {{ totalsResults }} resultat</span>
-
         <div class="cards">
           <card
             v-for="venue in venues"
@@ -90,6 +89,7 @@
             v-bind:venue="venue"
           ></card>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -100,14 +100,12 @@ import axios from "axios";
 import _ from "lodash";
 import qs from "qs";
 import Header from "../components/Header";
-import Map from "../components/Map";
 import Card from "../components/Card";
 
 export default {
   name: "ListingPage",
   components: {
     "my-header": Header,
-    "my-map": Map,
     card: Card,
   },
   data() {
@@ -118,11 +116,8 @@ export default {
       allFeatures: [],
       searchParams: {
         address: null,
-        venueType: null,
         noOfPeople: null,
         venuename: null,
-        features: [],
-        types: [],
         featureIds: [],
         venueTypeIds: [],
       },
@@ -137,14 +132,13 @@ export default {
 
     if (this.$route.query.address)
       this.searchParams.address = this.$route.query.address;
-    if (this.$route.query.venueType)
-      this.searchParams.venueType = this.$route.query.venueType;
+    if (this.$route.query.venueType) {
+      this.searchParams.venueTypeIds.push(this.$route.query.venueType);
+    }
     if (this.$route.query.noOfPeople)
       this.searchParams.noOfPeople = this.$route.query.noOfPeople;
 
-    if(!Object.keys(this.$route.query).length)
-      this.getVenues();
-
+    if (!Object.keys(this.$route.query).length) this.getVenues();
   },
   created() {
     this.debouncedGetVenues = _.debounce(this.getVenues, 500);
@@ -164,13 +158,21 @@ export default {
         this.searchParams.featureIds &&
         this.searchParams.featureIds.length > 0
       )
-        queryObject._where.push(this.searchParams.featureIds.map(feature => ({ "features.id": feature })));
+        queryObject._where.push(
+          this.searchParams.featureIds.map((feature) => ({
+            "features.id": feature,
+          }))
+        );
 
       if (
         this.searchParams.venueTypeIds &&
         this.searchParams.venueTypeIds.length > 0
       )
-        queryObject._where.push(this.searchParams.venueTypeIds.map(venueType => ({ "venue_types.id": venueType })));
+        queryObject._where.push(
+          this.searchParams.venueTypeIds.map((venueType) => ({
+            "venue_types.id": venueType,
+          }))
+        );
 
       if (this.searchParams.address)
         queryObject._where.push({
@@ -233,6 +235,10 @@ export default {
   margin: 25px;
 }
 
+.cards {
+  min-height: 400px;
+}
+
 .horizontal {
   display: flex;
   justify-content: space-between;
@@ -262,13 +268,14 @@ export default {
     margin-bottom: -120px;
     .cards {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
       .card {
-        width: 30%;
+        width: 90%;
+        margin: 20px;
       }
     }
   }
-
   .flex {
     display: flex;
     width: 97%;
@@ -302,40 +309,24 @@ export default {
     }
   }
 
-  .search-results {
+.container-serach-results {
+  background-color: $light;
+
+.search-results {
+    margin: 0 auto;
     margin-bottom: -150px;
+    max-width: 1200px;
     .cards {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
       .card {
-        width: 30%;
+        width: 60%;
       }
     }
   }
-
-  .grid-venue-listing {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "main sidebar"
-      "results sidebar";
-    .search-container {
-      grid-area: "main";
-      .form-container {
-        width: 100%;
-      }
-    }
-    .search-results {
-      grid-area: "results";
-    }
-    #map {
-      grid-area: "sidebar";
-      height: 80vh;
-      position: sticky;
-    }
-  }
+}
+  
 
   .flex {
     display: flex;

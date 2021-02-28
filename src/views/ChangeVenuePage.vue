@@ -21,7 +21,7 @@
           <div>
             <ValidationProvider
               name="venue name"
-              rules="required|alpha"
+              rules="required"
               v-slot="{ errors }"
             >
               <label for="venue-name">Navn på lokale</label>
@@ -37,7 +37,7 @@
           <div>
             <ValidationProvider
               name="your name"
-              rules="required|alpha"
+              rules="required"
               v-slot="{ errors }"
             >
               <label for="owner-name">Fullt navn utleier</label>
@@ -46,7 +46,6 @@
                 id="owner-name"
                 name="owner-name"
                 v-model="form.name"
-                :placeholder="venue.name"
               />
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
@@ -54,24 +53,26 @@
         </div>
         <div class="flex">
           <div>
-            <ValidationProvider
-              name="email"
-              rules="required|email"
-              v-slot="{ errors }"
-            >
-              <label for="email">E-post adresse</label>
-              <input
-                type="email"
-                id="email"
+            <div>
+              <ValidationProvider
                 name="email"
-                v-model="form.email"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </ValidationProvider>
+                rules="required|email"
+                v-slot="{ errors }"
+              >
+                <label for="email">E-post adresse</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  v-model="form.email"
+                />
+                <span class="error">{{ errors[0] }}</span>
+              </ValidationProvider>
+            </div>
             <div>
               <ValidationProvider
                 name="phone number"
-                rules="required|numeric"
+                rules="required"
                 v-slot="{ errors }"
               >
                 <label for="phone">Telefonnummer</label>
@@ -85,11 +86,11 @@
               </ValidationProvider>
             </div>
           </div>
-          <div class="flex">
+          <div>
             <div>
               <ValidationProvider
                 name="address"
-                rules="required|alpha"
+                rules="required"
                 v-slot="{ errors }"
               >
                 <label for="address">Adresse</label>
@@ -112,23 +113,9 @@
               />
             </div>
           </div>
+        </div>
 
-          <ValidationProvider
-            name="password"
-            rules="required"
-            v-slot="{ errors }"
-          >
-            <label for="password">Passord</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              v-validate="'required'"
-              v-model="form.password"
-            />
-            <span class="error">{{ errors[0] }}</span>
-          </ValidationProvider>
-
+        <div>
           <h3 class="padding-top">informasjon om ditt lokale</h3>
 
           <div class="flex">
@@ -152,39 +139,38 @@
                     :id="'venue_type_' + item.id"
                     :name="item.name"
                     :value="item.id"
-                    v-model="form.venue_type"
+                    v-model="form.venue_types"
                   />
                   <span class="checkbox"></span>
                 </label>
                 <span class="error">{{ errors[0] }}</span>
               </ValidationProvider>
             </div>
-          </div>
-
-          <div>
-            <ValidationProvider
-              name="amenities"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <label for="ameneties">Fasiliteter</label>
-              <label
-                class="padding-left"
-                v-for="item in allFeatures"
-                :key="'features_' + item.id"
-                v-bind:for="'features_' + item.id"
-                >{{ item.name }}
-                <input
-                  type="checkbox"
-                  :id="'features_' + item.id"
-                  :name="item.name"
-                  :value="item.id"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-              <span class="error">{{ errors[0] }}</span>
-            </ValidationProvider>
+            <div>
+              <ValidationProvider
+                name="amenities"
+                rules="required"
+                v-slot="{ errors }"
+              >
+                <label for="ameneties">Fasiliteter</label>
+                <label
+                  class="padding-left"
+                  v-for="item in allFeatures"
+                  :key="'features_' + item.id"
+                  v-bind:for="'features_' + item.id"
+                  >{{ item.name }}
+                  <input
+                    type="checkbox"
+                    :id="'features_' + item.id"
+                    :name="item.name"
+                    :value="item.id"
+                    v-model="form.features"
+                  />
+                  <span class="checkbox"></span>
+                </label>
+                <span class="error">{{ errors[0] }}</span>
+              </ValidationProvider>
+            </div>
           </div>
         </div>
 
@@ -235,7 +221,7 @@
               type="radio"
               id="per-person"
               name="price-type"
-              value="per-person"
+              value="perperson"
               v-model="form.pricing"
             />
             <span class="radio"></span>
@@ -246,7 +232,7 @@
               type="radio"
               id="venue-hire"
               name="price-type"
-              value="venue-hire"
+              value="venuehire"
               v-model="form.pricing"
             />
             <span class="radio"></span>
@@ -257,7 +243,7 @@
               type="radio"
               id="minimum-price"
               name="price-type"
-              value="minimum-price"
+              value="minimumprice"
               v-model="form.pricing"
             />
             <span class="radio"></span>
@@ -282,7 +268,7 @@
 
         <ValidationProvider
           name="images"
-          rules="required|image"
+          rules="image"
           v-slot="{ validate, errors }"
         >
           <label for="images" class="file-upload"
@@ -293,14 +279,24 @@
             id="images"
             name="images"
             multiple="multiple"
-            @change="validate"
+            ref="files"
+            @change="handleFiles($event, validate)"
           />
           <span class="error">{{ errors[0] }}</span>
         </ValidationProvider>
 
+        <div>
+          <ul>
+            <li v-for="item in files" :key="'image-' + item.id">
+              <img :src="item.formats.thumbnail.url | imageFilter" />
+              <button class="del-btn" @click="deleteImage(item.id)">slett</button>
+            </li>
+          </ul>
+        </div>
+
         <ValidationProvider
           name="description"
-          rules="required|alpha"
+          rules="required"
           v-slot="{ errors }"
         >
           <label for="description">Beskrivelse til kundene</label>
@@ -346,7 +342,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import Header from "../components/Header";
 import axios from "axios";
 
@@ -359,24 +355,25 @@ export default {
     return {
       id: this.$route.params.id,
       form: {
-        id: "",
         name: "",
         venuename: "",
         website: "",
         email: "",
         number: "",
-        password: "",
-        repeat_password: "",
         description: "",
         pricing: "",
         fromprice: "",
         seating: "",
         standing: "",
         address: "",
-        gallery: [],
+        files: null,
         venue_types: [],
         features: [],
+        terms: false,
       },
+      files: [],
+      features: [],
+      venue_types: [],
       allVenueTypes: [],
       allFeatures: [],
       error: null,
@@ -384,36 +381,88 @@ export default {
   },
   created: function() {},
   async mounted() {
-    const response = await axios.get("/venues", this.$route.params.id);
-    this.venue = response.data;
-    
-    const venueTypeResponse =  await axios.get("/venue-types");
+    const response = await axios.get(`/venues/${this.id}`);
+    this.form.name = response.data.name;
+    this.form.venuename = response.data.venuename;
+    this.form.website = response.data.website;
+    this.form.email = response.data.email;
+    this.form.number = response.data.number;
+    this.form.description = response.data.description;
+    this.form.pricing = response.data.pricing;
+    this.form.fromprice = response.data.fromprice;
+    this.form.seating = response.data.seating;
+    this.form.standing = response.data.standing;
+    this.form.address = response.data.address;
+    this.form.terms = response.data.terms;
+    this.form.venue_types = response.data.venue_types.map((item) => item.id);
+    this.form.features = response.data.features.map((item) => item.id);
+
+    this.venue_types = response.data.venue_types;
+    this.features = response.data.features;
+    this.files = response.data.gallery;
+
+    const venueTypeResponse = await axios.get("/venue-types");
     this.allVenueTypes = venueTypeResponse.data;
 
     const featuresReponse = await axios.get("/features");
     this.allFeatures = featuresReponse.data;
   },
-  computed: {
-    ...mapGetters({ Venues: "StateVenues", User: "StateUser" }),
-  },
   methods: {
-    ...mapActions(["CreatePost", "GetVenues"]),
-    async onSubmit() {
-      this.$modal.show("edit-modal");
-      try {
-        await this.ChangeVenue(this.form);
-      } catch (error) {
-        throw "Sorry cant change your venue right now!";
+    ...mapActions(["deleteAccount"]),
+    async deleteImage(id) {
+      await axios.delete(`/upload/files/${id}`);
+      this.files = this.files.filter((item) => item.id !== id);
+    },
+    async handleFiles(e, val) {
+      const valid = await val(e);
+
+      if (valid) {
+        this.form.files = this.$refs.files.files;
+        return;
       }
+    },
+    async onSubmit() {
+      console.log("Submit...");
+      this.$modal.show("edit-modal");
+
+      let venueData = new FormData();
+
+      venueData.append("data", JSON.stringify(this.form));
+
+      if (this.form.files?.length > 0) {
+        for (let i = 0; i < this.form.files.length; i++) {
+          const file = this.form.files[i];
+          venueData.append(`files.gallery`, file, file.name);
+        }
+      }
+
+      await axios.put(`/venues/${this.id}`, venueData);
     },
     async deleteVenue() {
       this.$modal.show("delete-modal");
-      try {
-        await this.DeleteVenue(this.form);
-      } catch (error) {
-        throw "Sorry cant delete your venue right now!";
-      }
+
+      await this.deleteAccount();
+    },
+  },
+  filters: {
+    imageFilter(value) {
+      return `${process.env.VUE_APP_STRAPI_URL}${value}`;
     },
   },
 };
 </script>
+
+<style lang="scss">
+
+li {
+  text-align: center;
+  img {
+    margin: 0 auto;
+  }
+}
+
+  .del-btn {
+    width: 200px !important;
+    margin: 0;
+  }
+</style>

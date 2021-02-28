@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
+import store from "../store";
 import SearchPage from "../views/SearchPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import ContactPage from "../views/ContactPage.vue";
@@ -10,6 +11,22 @@ import ChangeVenuePage from "../views/ChangeVenuePage.vue";
 import EnquireVenuePage from "../views/EnquireVenuePage.vue";
 
 Vue.use(VueRouter);
+
+const ifNotAuthenticated = (to, from, next) => {
+  if (!store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/')
+}
+
+const ifAuthenticated = (to, from, next) => {
+  if (store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/login')
+}
 
 const routes = [
   {
@@ -22,6 +39,7 @@ const routes = [
     name: "LoginPage",
     component: LoginPage,
     meta: { guest: true },
+    beforeEnter: ifNotAuthenticated,
   },
   {
     path: "/contact",
@@ -43,12 +61,14 @@ const routes = [
     name: "AddVenuePage",
     component: AddVenuePage,
     meta: { guest: true },
+    beforeEnter: ifNotAuthenticated,
   },
   {
     path: "/edit/:id",
     name: "ChangeVenuePage",
     component: ChangeVenuePage,
     meta: {requireAuthentication: true},
+    beforeEnter: ifAuthenticated,
   },
   {
     path: "/enquire/:id",
@@ -59,6 +79,12 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
+  scrollBehavior(to, from, savedPosition) {
+    if(savedPosition) {
+      return savedPosition
+    }
+      return { x: 0, y: 0 }
+  },
   base: process.env.BASE_URL,
   routes
 })

@@ -111,10 +111,9 @@
       </div>
 
       <div class="sidebar">
-        <router-link to="/enquire"
+        <router-link :to="{ name: 'EnquireVenuePage', params: { id } }"
           ><button class="btn--large">send forespørsel</button></router-link
         >
-        <my-map></my-map>
       </div>
     </div>
   </div>
@@ -122,14 +121,12 @@
 
 <script>
 import Header from "../components/Header";
-import Map from "../components/Map";
 import axios from "axios";
 
 export default {
   name: "VenueDetailsPage",
   components: {
     "my-header": Header,
-    "my-map": Map,
   },
   data() {
     return {

@@ -14,7 +14,7 @@
             type="email"
             name="email"
             placeholder="e-post adresse.."
-            v-model="form.email"
+            v-model="form.username"
           />
           <span class="error">{{ errors[0] }}</span>
         </ValidationProvider>
@@ -57,25 +57,18 @@ export default {
   data() {
     return {
       form: {
-        email: "",
+        username: "",
         password: "",
       },
     };
   },
   mounted() {},
   methods: {
-    ...mapActions(["LogIn"]),
+    ...mapActions(["logIn"]),
     async onSubmit() {
-      const User = new FormData();
-      User.append("email", this.form.email);
-      User.append("password", this.form.password);
-
-      console.log("User:" + JSON.stringify(User));
 
       try {
-        await this.LogIn(User);
-
-        this.$router.push("/change-venue");
+        await this.logIn(this.form);
 
         this.error = false;
       } catch (error) {

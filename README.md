@@ -1,21 +1,21 @@
-# exam2
+# Lokale.no
 
-## Project setup
+## To setup project:
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### To compile and hot-reloads for development:
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### To compile and minifie for production:
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### To Lint and fix files:
 ```
 npm run lint
 ```

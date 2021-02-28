@@ -1,28 +1,29 @@
 <template>
   <div>
-    <google-map
+    <GmapMap
       id="map"
       ref="map"
       :center="defaultMapOptions.center"
       :zoom="defaultMapOptions.zoom"
+      map-type-id="terrain"
     >
-      <google-map-marker
-        v-for="(marker, index) in markersList"
+      <GmapMarker
         :key="index"
-        :title="marker.title"
-        :position="marker.position"
-        @click="center=marker"
-      ></google-map-marker>
-    </google-map>
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center = m.position"
+      />
+    </GmapMap>
   </div>
 </template>
 
 <script>
-// import func from '../../vue-temp/vue-editor-bridge';
 export default {
   data() {
     return {
-      markersList: [],
+      markers: [],
       defaultMapOptions: {
         zoom: 11,
         minZoom: 3,
@@ -35,30 +36,29 @@ export default {
     };
   },
   methods: {
-    mounted () {
-    //   this.findPlace();
-    // },
-    // setPlace(place) {
-    //   this.currentPlace = place;
-    // },
-    // findPlace: function() {
-    //   navigator.geolocation.getCurrentPosition(posistion => {
-    //     this.center = {
-    //       lat: posistion.coords.latitude,
-    //       lng: posistion.coords.longitude
-    //     };
-    //   });
-    }
-  }
+    mounted() {
+        this.findPlace();
+      },
+      setPlace(place) {
+        this.currentPlace = place;
+      },
+      findPlace: function() {
+        navigator.geolocation.getCurrentPosition(posistion => {
+          this.center = {
+            lat: posistion.coords.latitude,
+            lng: posistion.coords.longitude
+          };
+        });
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-   button::after {
-     border: none;
-   }
-   button:hover {
-     border: none;
-   }
-
+button::after {
+  border: none;
+}
+button:hover {
+  border: none;
+}
 </style>

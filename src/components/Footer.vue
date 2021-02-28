@@ -5,13 +5,13 @@
         <router-link to="/contact">
           <li>Kontakt oss</li>
         </router-link>
-        <router-link to="/add-venue">
+        <router-link to="/register">
           <li>Registrer ditt lokale</li>
         </router-link>
         <router-link to="/login">
           <li>Logg inn</li>
         </router-link>
-        <router-link to="/listing">
+        <router-link to="/listing/">
           <li>Se alle lokaler</li>
         </router-link>
       </ul>
@@ -21,19 +21,12 @@
 </template>
 
 <script>
-
 export default {
-  name: 'Footer'
+  name: "Footer"
 };
-
-
-
-
 </script>
 
-
 <style lang="scss">
-
 footer {
   position: absolute;
   width: 100%;
@@ -66,10 +59,8 @@ footer {
   }
 }
 
-
 // Tablet
 @media (min-width: 600px) and (max-width: 1020px) {
-
  footer {
     height: 230px;
     ul {
@@ -83,10 +74,8 @@ footer {
   }
 }
 
-
 // Desktop
 @media (min-width: 1020px) {
-
   footer {
     height: 200px;
     ul {
@@ -99,6 +88,4 @@ footer {
     }
   }
 }
-
-
 </style>

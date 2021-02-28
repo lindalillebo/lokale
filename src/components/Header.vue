@@ -12,7 +12,7 @@
             </div>
             <ul :class="{open: toggledNav}" id="nav-links">
                 <li>
-                    <router-link to="/add-venue" class="add-venue">registrer lokale</router-link>
+                    <router-link to="/register" class="add-venue">registrer lokale</router-link>
                 </li>
                 <li v-if="loggedIn">
                   <router-link to="/"><button @click="logout">logg ut</button></router-link>
@@ -29,14 +29,14 @@
 
 
 export default {
-    name: 'Header',
+    name: "Header",
       data () {
         return {
           toggledNav: false
         }
       },
       watch: {
-        '$route' () {
+        "$route" () {
           this.toggledNav = false
         }
       },
@@ -47,8 +47,8 @@ export default {
       },
       methods: {
         async logout() {
-          await this.$store.dispatch('LogOut')
-          this.$router.push('/login')
+          await this.$store.dispatch("LogOut")
+          this.$router.push("/login")
         }
       },
 }

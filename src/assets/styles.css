@@ -1,18 +1,14 @@
-@import "./variables";
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Quando&display=swap");
-
-// Global styles
-
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  font-family: $font-stack;
+  font-family: Lato, sans serif;
   font-weight: 300;
-  color: $dark;
-  background-color: $beige;
+  color: #282219;
+  background-color: #FBF6EF;
   font-size: 0.9em;
   height: 100%;
   margin: 0 0 350px;
@@ -22,18 +18,19 @@ body {
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 h1,
 h2,
 h3 {
-  font-family: $heading-font-family;
+  font-family: Quando, serif;
 }
 
 h1 {
   font-size: 2.2em;
-  color: $light;
+  color: #FFFDFB;
   margin: 0;
 }
 
@@ -56,7 +53,7 @@ h4 {
 
 a {
   text-decoration: none;
-  color: $dark;
+  color: #282219;
 }
 
 .padding-top {
@@ -67,27 +64,29 @@ a {
   margin-top: 80px !important;
 }
 
-// Button
-
 button {
   display: inline-block;
-  background-color: $golden;
+  background-color: #D4974C;
   font-size: 1em;
-  color: $light;
+  color: #FFFDFB;
   border: none;
   border-radius: 5px;
   position: relative;
   padding: 7px 20px;
-  &:hover {
-    border-radius: 0;
-  }
-  &:active {
-    background-color: darken($golden, 10%);
-  }
-  &:focus {
-    outline: none;
-    box-shadow: none;
-  }
+}
+
+button:hover {
+  border-radius: 0;
+}
+
+button:active {
+  background-color: #bf7e2e;
+}
+
+button:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 button:after {
@@ -97,7 +96,7 @@ button:after {
   left: 3px;
   bottom: -3px;
   right: -3px;
-  border: 1px solid $dark;
+  border: 1px solid #282219;
   padding: 0;
   margin: 0;
 }
@@ -107,26 +106,30 @@ button:hover:after {
   left: 0;
   bottom: 0;
   right: 0;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-
 
 #btn--round {
   display: block;
   margin: 20px auto;
-  border-radius: 100%;
-  height: 50px; 
-  &:hover {
-    border-radius: 0;
-    transition: all 0.2s ease;
-    &:after {
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      transition: all 0.2s ease;
-    }
-  }
+  border-radius: 50%;
+  height: 42px;
+}
+
+#btn--round:hover {
+  border-radius: 0;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+#btn--round:hover:after {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .btn--large {
@@ -136,16 +139,16 @@ button:hover:after {
 }
 
 #btn--delete {
-  background-color: $brown;
-  &:active,
-  &:focus {
-    background-color: $dark;
-  }
+  background-color: #70675C;
 }
 
-// Desktop
+#btn--delete:active, #btn--delete:focus {
+  background-color: #282219;
+}
+
 @media (min-width: 1020px) {
   h2 {
-      margin: 70px 0 60px;
+    margin: 70px 0 60px;
   }
 }
+/*# sourceMappingURL=styles.css.map */

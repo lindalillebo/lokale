@@ -19,7 +19,11 @@
           <span class="error">{{ errors[0] }}</span>
         </ValidationProvider>
 
-        <ValidationProvider name="passord" rules="required" v-slot="{ errors }">
+        <ValidationProvider
+          name="password"
+          rules="required"
+          v-slot="{ errors }"
+        >
           <input
             type="password"
             name="password"
@@ -33,7 +37,7 @@
 
         <span class="small-text"
           >Har du ingen bruker? Registrer deg
-          <router-link to="/add-venue">her</router-link></span
+          <router-link to="/register">her</router-link></span
         >
       </form>
     </ValidationObserver>
@@ -41,8 +45,9 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 import Header from "../components/Header";
+import { mapActions } from "vuex";
+
 
 export default {
   name: "LoginPage",
@@ -57,8 +62,8 @@ export default {
       },
     };
   },
+  mounted() {},
   methods: {
-    mounted() {},
     ...mapActions(["LogIn"]),
     async onSubmit() {
       const User = new FormData();
@@ -121,6 +126,9 @@ export default {
     width: 90%;
     font-family: $font-stack;
     font-weight: 300;
+  }
+  input:invalid {
+    border-color: $red;
   }
   input:focus,
   textarea:focus {
@@ -216,13 +224,18 @@ export default {
     width: 90%;
   }
   .error {
-    display: none;
+    margin: 0;
+    display: block;
+    font-size: 0.9em;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    color: $red;
   }
   a:hover {
     color: $golden;
   }
 }
-
 .red {
   color: $red;
 }
@@ -240,10 +253,10 @@ export default {
     input,
     textarea {
       margin: 15px auto;
-       width: 95%;
+      width: 95%;
     }
-    input {
-      margin-bottom: 35px;
+    .error {
+      padding-left: 18px;
     }
     h3 {
       text-align: left;
@@ -282,15 +295,15 @@ export default {
     input,
     textarea {
       margin: 15px auto;
-       width: 95%;
+      width: 95%;
     }
-    input {
-      margin-bottom: 35px;
+    .error {
+      padding-left: 18px;
     }
     h3 {
       text-align: left;
       margin: 40px auto 30px;
-       width: 95%;
+      width: 95%;
     }
     p {
       margin: 30px auto 15px;

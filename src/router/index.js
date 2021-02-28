@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
-import store from '../store';
 import SearchPage from "../views/SearchPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import ContactPage from "../views/ContactPage.vue";
@@ -35,57 +34,33 @@ const routes = [
     component: ListingPage,
   },
   {
-    path: "/venue-details",
+    path: "/details/:id",
     name: "VenueDetailsPage",
     component: VenueDetailsPage,
   },
   {
-    path: "/add-venue",
+    path: "/register",
     name: "AddVenuePage",
     component: AddVenuePage,
     meta: { guest: true },
   },
   {
-    path: "/change-venue",
+    path: "/edit/:id",
     name: "ChangeVenuePage",
     component: ChangeVenuePage,
     meta: {requireAuthentication: true},
   },
   {
-    path: "/enquire-venue",
+    path: "/enquire/:id",
     name: "EnquireVenuePage",
     component: EnquireVenuePage,
   },
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
 })
-
-router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requireAuthentication)) {
-    if (store.getters.isAuthenticated) {
-      next()
-      return
-    }
-    next('/login')
-  } else {
-    next()
-  }
-});
-
-router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.guest)) {
-    if (store.getters.isAuthenticated) {
-      next("/change-venue");
-      return;
-    }
-    next();
-  } else {
-    next();
-  }
-});
 
 export default router

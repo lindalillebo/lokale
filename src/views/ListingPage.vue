@@ -6,13 +6,12 @@
         <form class="form-container">
           <div class="flex">
             <div>
-              <label for="city-search">Område</label>
+              <label for="address">Område</label>
               <input
                 type="text"
-                ref="autocomplete"
-                id="city-search"
-                name="city-search"
-                v-model="venues.city"
+                id="address"
+                name="address"
+                v-model="searchParams.address"
               />
             </div>
             <div>
@@ -21,7 +20,7 @@
                 type="number"
                 id="number-guests"
                 name="number-guests"
-                v-model="venues.number"
+                v-model="searchParams.noOfPeople"
               />
             </div>
           </div>
@@ -31,122 +30,18 @@
             <div>
               <label for="text">Type arrangement</label>
 
-              <label class="padding-left" for="event1"
-                >Bedriftsarrangement
+              <label
+                class="padding-left"
+                v-for="item in allVenueTypes"
+                :key="'venue_type_' + item.id"
+                v-bind:for="'venue_type_' + item.id"
+                >{{ item.name }}
                 <input
                   type="checkbox"
-                  id="event1"
-                  name="event1"
-                  value="bedriftsarrangement"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event2"
-                >Bryllup
-                <input
-                  type="checkbox"
-                  id="event2"
-                  name="event2"
-                  value="bryllup"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event3"
-                >Dåp / Navnedag / Konfirmasjon
-                <input
-                  type="checkbox"
-                  id="event3"
-                  name="event3"
-                  value="dåp / navnedag / konfirmasjon"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event4"
-                >Fest
-                <input
-                  type="checkbox"
-                  id="event4"
-                  name="event4"
-                  value="fest"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event5"
-                >Forestilling / Konsert
-                <input
-                  type="checkbox"
-                  id="event5"
-                  name="event5"
-                  value="forestilling / konsert"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event6"
-                >Julebord
-                <input
-                  type="checkbox"
-                  id="event6"
-                  name="event6"
-                  value="julebord"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event7"
-                >Kurs / Konferanse
-                <input
-                  type="checkbox"
-                  id="event7"
-                  name="event7"
-                  value="kurs / konferanse"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event8"
-                >Middag / Lunsj
-                <input
-                  type="checkbox"
-                  id="event8"
-                  name="event8"
-                  value="middag / lunsj"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event9"
-                >Møte
-                <input
-                  type="checkbox"
-                  id="event9"
-                  name="event9"
-                  value="møte"
-                  v-model="venues.checkedEvent"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event10"
-                >Utstilling
-                <input
-                  type="checkbox"
-                  id="event10"
-                  name="event10"
-                  value="utstilling"
-                  v-model="venues.checkedEvent"
+                  :id="'venue_type_' + item.id"
+                  :name="item.name"
+                  :value="item.id"
+                  v-model="searchParams.venueTypeIds"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -155,122 +50,18 @@
             <div>
               <label for="ameneties">Fasiliteter</label>
 
-              <label class="padding-left" for="amenity1"
-                >Wifi
+              <label
+                class="padding-left"
+                v-for="item in allFeatures"
+                :key="'features_' + item.id"
+                v-bind:for="'features_' + item.id"
+                >{{ item.name }}
                 <input
                   type="checkbox"
-                  id="amenity1"
-                  name="amenity1"
-                  value="wifi"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity2"
-                >Tilbyr alkohol
-                <input
-                  type="checkbox"
-                  id="amenity2"
-                  name="amenity2"
-                  value="tilbyr alkohol"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity3"
-                >Tilbyr matservering
-                <input
-                  type="checkbox"
-                  id="amenity3"
-                  name="amenity3"
-                  value="tilbyr matservering"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity4"
-                >Medbragt alkohol tillat
-                <input
-                  type="checkbox"
-                  id="amenity4"
-                  name="amenity4"
-                  value="medbragt alkohol tillat"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity5"
-                >Medbragt mat tillatt
-                <input
-                  type="checkbox"
-                  id="amenity5"
-                  name="amenity5"
-                  value="medbragt mat tillatt"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity6"
-                >Dansegulv
-                <input
-                  type="checkbox"
-                  id="amenity6"
-                  name="amenity6"
-                  value="dansegulv"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity7"
-                >Rullestolvennlig
-                <input
-                  type="checkbox"
-                  id="amenity7"
-                  name="amenity7"
-                  value="rullestolvennlig"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity8"
-                >Scene
-                <input
-                  type="checkbox"
-                  id="amenity8"
-                  name="amenity8"
-                  value="scene"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity9"
-                >Prosjektor / TV
-                <input
-                  type="checkbox"
-                  id="amenity9"
-                  name="amenity9"
-                  value="prosjektor / TV"
-                  v-model="venues.checkedAmenity"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity10"
-                >Selvbetjent kjøkken
-                <input
-                  type="checkbox"
-                  id="amenity10"
-                  name="amenity10"
-                  value="selvbetjent kjøkken"
-                  v-model="venues.checkedAmenity"
+                  :id="'features_' + item.id"
+                  :name="item.name"
+                  :value="item.id"
+                  v-model="searchParams.featureIds"
                 />
                 <span class="checkbox"></span>
               </label>
@@ -283,7 +74,7 @@
             type="text"
             id="venue-name"
             name="venue-name"
-            v-model="venues.venuename"
+            v-model="searchParams.venuename"
           />
         </form>
       </div>
@@ -293,22 +84,21 @@
         <span class="page-numbers">Fant {{ totalsResults }} resultat</span>
 
         <div class="cards">
-          <card v-for="venue in venues" :key="venue.id" v-bind:venue="venue"></card>
+          <card
+            v-for="venue in venues"
+            :key="venue.id"
+            v-bind:venue="venue"
+          ></card>
         </div>
       </div>
-
-      <!-- <div class="pagination">
-        <a href="#"><i class="fas fa-angle-double-left"></i></a>
-        <a class="active" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#"><i class="fas fa-angle-double-right"></i></a>
-      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import axios from "axios";
+import _ from "lodash";
+import qs from "qs";
 import Header from "../components/Header";
 import Map from "../components/Map";
 import Card from "../components/Card";
@@ -318,34 +108,105 @@ export default {
   components: {
     "my-header": Header,
     "my-map": Map,
-    "card": Card,
+    card: Card,
   },
   data() {
     return {
       venues: [],
-      query: this.$route.query
+      isLoading: false,
+      allVenueTypes: [],
+      allFeatures: [],
+      searchParams: {
+        address: null,
+        venueType: null,
+        noOfPeople: null,
+        venuename: null,
+        features: [],
+        types: [],
+        featureIds: [],
+        venueTypeIds: [],
+      },
     };
   },
   async mounted() {
-    
+    const venueTypeResponse = await axios.get("/venue-types");
+    this.allVenueTypes = venueTypeResponse.data;
+
+    const featuresReponse = await axios.get("/features");
+    this.allFeatures = featuresReponse.data;
+
+    if (this.$route.query.address)
+      this.searchParams.address = this.$route.query.address;
+    if (this.$route.query.venueType)
+      this.searchParams.venueType = this.$route.query.venueType;
+    if (this.$route.query.noOfPeople)
+      this.searchParams.noOfPeople = this.$route.query.noOfPeople;
+
+    if(!Object.keys(this.$route.query).length)
+      this.getVenues();
+
   },
-  ...mapActions(['GetVenues']),
+  created() {
+    this.debouncedGetVenues = _.debounce(this.getVenues, 500);
+  },
+  watch: {
+    searchQs() {
+      this.debouncedGetVenues();
+    },
+  },
   computed: {
+    searchQs() {
+      const queryObject = {
+        _where: [],
+      };
+
+      if (
+        this.searchParams.featureIds &&
+        this.searchParams.featureIds.length > 0
+      )
+        queryObject._where.push(this.searchParams.featureIds.map(feature => ({ "features.id": feature })));
+
+      if (
+        this.searchParams.venueTypeIds &&
+        this.searchParams.venueTypeIds.length > 0
+      )
+        queryObject._where.push(this.searchParams.venueTypeIds.map(venueType => ({ "venue_types.id": venueType })));
+
+      if (this.searchParams.address)
+        queryObject._where.push({
+          address_contains: this.searchParams.address,
+        });
+
+      if (this.searchParams.venuename)
+        queryObject._where.push({
+          venuename_contains: this.searchParams.venuename,
+        });
+
+      if (this.searchParams.venueType)
+        queryObject._where.push({
+          venue_types_in: this.searchParams.venueType,
+        });
+
+      if (this.searchParams.noOfPeople)
+        queryObject._where.push({
+          _or: [
+            { seating_gte: this.searchParams.noOfPeople },
+            { standing_gte: this.searchParams.noOfPeople },
+          ],
+        });
+
+      return qs.stringify(queryObject);
+    },
     totalsResults() {
       return this.venues.length;
     },
-    filteredVenues() {
-      return this.venues.filter(() => true);
-    },
-  },
-  filters: {
-    imageFilter(value) {
-      return `${process.env.VUE_APP_STRAPI_URL}${value?.gallery[0]?.formats?.small?.url}`;
-    },
   },
   methods: {
-    hasFeature(feature) {
-      return this.venues.features.some((item) => item.id === feature.id);
+    async getVenues() {
+      console.log("getting venues:", this.searchQs);
+
+      let response = await axios.get(`/venues?${this.searchQs}`);
+      this.venues = response.data;
     },
   },
 };
@@ -365,14 +226,6 @@ export default {
   font-weight: 500;
   font-size: 0.8em;
   margin-left: 20px;
-}
-.pagination {
-  font-weight: 700;
-  text-align: center;
-  padding-bottom: 30px;
-  a {
-    padding: 0 5px;
-  }
 }
 
 .border-bottom {

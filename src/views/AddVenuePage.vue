@@ -25,14 +25,14 @@
 
         <div class="flex">
           <div>
-             <ValidationProvider
-              name="lokale navn"
+            <ValidationProvider
+              name="venue name"
               rules="required|alpha"
               v-slot="{ errors }"
             >
-            <label for="venue-name"
-              >Navn på lokale<span class="red"> *</span></label
-            >
+              <label for="venue-name"
+                >Navn på lokale<span class="red"> *</span></label
+              >
               <input
                 type="text"
                 id="venue-name"
@@ -44,7 +44,7 @@
           </div>
           <div>
             <ValidationProvider
-              name="ditt navn"
+              name="your name"
               rules="required|alpha"
               v-slot="{ errors }"
             >
@@ -64,7 +64,7 @@
         <div class="flex">
           <div>
             <ValidationProvider
-              name="e-post"
+              name="email"
               rules="required|email"
               v-slot="{ errors }"
             >
@@ -82,8 +82,8 @@
           </div>
           <div>
             <ValidationProvider
-              name="telefonnummer"
-              rules="required|regex: ^0{2}[0-9]{11,}"
+              name="phone number"
+              rules="required|numeric"
               v-slot="{ errors }"
             >
               <label for="phone"
@@ -97,7 +97,7 @@
         <div class="flex">
           <div>
             <ValidationProvider
-              name="adresse"
+              name="address"
               rules="required|alpha"
               v-slot="{ errors }"
             >
@@ -121,27 +121,23 @@
             />
           </div>
         </div>
-            <ValidationProvider
-              name="passord"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <label for="password">Passord<span class="red"> *</span></label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                v-model="form.password"
-              />
-              <span class="error">{{ errors[0] }}</span>
-            </ValidationProvider>
+        <ValidationProvider name="password" rules="required" v-slot="{ errors }">
+          <label for="password">Passord<span class="red"> *</span></label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            v-model="form.password"
+          />
+          <span class="error">{{ errors[0] }}</span>
+        </ValidationProvider>
 
         <h3 class="padding-top">informasjon om ditt lokale</h3>
 
         <div class="flex">
           <div>
             <ValidationProvider
-              name="type arrangement"
+              name="event type"
               rules="required"
               v-slot="{ errors }"
             >
@@ -150,256 +146,37 @@
                   *</span
                 ></label
               >
-
-              <label class="padding-left" for="event1"
-                >Bedriftsarrangement
+              <label class="padding-left" v-for="item in allVenueTypes" :key="'venue_type_' + item.id" v-bind:for="'venue_type_' + item.id"
+                >{{ item.name }}
                 <input
                   type="checkbox"
-                  id="event1"
-                  name="event1"
-                  value="bedriftsarrangement"
-                  v-model="form.venue_types"
+                  :id="'venue_type_' + item.id"
+                  :name="item.name"
+                  :value="item.id"
+                  v-model="form.venue_type"
                 />
                 <span class="checkbox"></span>
               </label>
-
-              <label class="padding-left" for="event2"
-                >Bryllup
-                <input
-                  type="checkbox"
-                  id="event2"
-                  name="event2"
-                  value="bryllup"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event3"
-                >Dåp / Navnedag / Konfirmasjon
-                <input
-                  type="checkbox"
-                  id="event3"
-                  name="event3"
-                  value="dåp / navnedag / konfirmasjon"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event4"
-                >Fest
-                <input
-                  type="checkbox"
-                  id="event4"
-                  name="event4"
-                  value="fest"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event5"
-                >Forestilling / Konsert
-                <input
-                  type="checkbox"
-                  id="event5"
-                  name="event5"
-                  value="forestilling / konsert"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event6"
-                >Julebord
-                <input
-                  type="checkbox"
-                  id="event6"
-                  name="event6"
-                  value="julebord"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event7"
-                >Kurs / Konferanse
-                <input
-                  type="checkbox"
-                  id="event7"
-                  name="event7"
-                  value="kurs / konferanse"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event8"
-                >Middag / Lunsj
-                <input
-                  type="checkbox"
-                  id="event8"
-                  name="event8"
-                  value="middag / lunsj"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event9"
-                >Møte
-                <input
-                  type="checkbox"
-                  id="event9"
-                  name="event9"
-                  value="møte"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="event10"
-                >Utstilling
-                <input
-                  type="checkbox"
-                  id="event10"
-                  name="event10"
-                  value="utstilling"
-                  v-model="form.venue_types"
-                />
-                <span class="checkbox"></span>
-              </label>
-
               <span class="error">{{ errors[0] }}</span>
             </ValidationProvider>
           </div>
 
           <div>
             <ValidationProvider
-              name="fasiliteter"
+              name="ameneties"
               rules="required"
               v-slot="{ errors }"
             >
               <label for="amenities"
                 >Fasiliteter<span class="red"> *</span></label
               >
-
-              <label class="padding-left" for="amenity1"
-                >Wifi
+              <label class="padding-left" v-for="item in allFeatures" :key="'features_' + item.id" v-bind:for="'features_' + item.id"
+                >{{ item.name }}
                 <input
                   type="checkbox"
-                  id="amenity1"
-                  name="amenity1"
-                  value="wifi"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity2"
-                >Tilbyr alkohol
-                <input
-                  type="checkbox"
-                  id="amenity2"
-                  name="amenity2"
-                  value="tilbyr alkohol"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity3"
-                >Tilbyr matservering
-                <input
-                  type="checkbox"
-                  id="amenity3"
-                  name="amenity3"
-                  value="tilbyr matservering"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity4"
-                >Medbragt alkohol tillat
-                <input
-                  type="checkbox"
-                  id="amenity4"
-                  name="amenity4"
-                  value="medbragt alkohol tillat"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity5"
-                >Medbragt mat tillatt
-                <input
-                  type="checkbox"
-                  id="amenity5"
-                  name="amenity5"
-                  value="medbragt mat tillatt"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity6"
-                >Dansegulv
-                <input
-                  type="checkbox"
-                  id="amenity6"
-                  name="amenity6"
-                  value="dansegulv"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity7"
-                >Rullestolvennlig
-                <input
-                  type="checkbox"
-                  id="amenity7"
-                  name="amenity7"
-                  value="rullestolvennlig"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity8"
-                >Scene
-                <input
-                  type="checkbox"
-                  id="amenity8"
-                  name="amenity8"
-                  value="scene"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity9"
-                >Prosjektor / TV
-                <input
-                  type="checkbox"
-                  id="amenity9"
-                  name="amenity9"
-                  value="prosjektor / TV"
-                  v-model="form.features"
-                />
-                <span class="checkbox"></span>
-              </label>
-
-              <label class="padding-left" for="amenity10"
-                >Selvbetjent kjøkken
-                <input
-                  type="checkbox"
-                  id="amenity10"
-                  name="amenity10"
-                  value="selvbetjent kjøkken"
+                  :id="'features_' + item.id"
+                  :name="item.name"
+                  :value="item.id"
                   v-model="form.features"
                 />
                 <span class="checkbox"></span>
@@ -412,7 +189,7 @@
         <div class="flex">
           <div>
             <ValidationProvider
-              name="sitteplasser"
+              name="seating number"
               rules="required|numeric"
               v-slot="{ errors }"
             >
@@ -432,7 +209,7 @@
           </div>
           <div>
             <ValidationProvider
-              name="ståplasser"
+              name="standing number"
               rules="required|numeric"
               v-slot="{ errors }"
             >
@@ -453,7 +230,7 @@
         </div>
 
         <ValidationProvider
-          name="pristype"
+          name="price type"
           rules="required"
           v-slot="{ errors }"
         >
@@ -497,7 +274,7 @@
         </ValidationProvider>
 
         <ValidationProvider
-          name="fra pris"
+          name="price"
           rules="required|numeric"
           v-slot="{ errors }"
         >
@@ -513,7 +290,11 @@
           <span class="error">{{ errors[0] }}</span>
         </ValidationProvider>
 
-        <ValidationProvider rules="required|image" v-slot="{ validate, errors }">
+        <ValidationProvider
+          name="images"
+          rules="required|image"
+          v-slot="{ validate, errors }"
+        >
           <label for="images" class="file-upload"
             >Legg ved bilder fra lokale<span class="red"> *</span></label
           >
@@ -523,14 +304,14 @@
             id="images"
             name="images"
             multiple="multiple"
-            @change="validate"
+            @change="processFile"
           />
           <span class="error">{{ errors[0] }}</span>
         </ValidationProvider>
 
         <ValidationProvider
-          name="beskrivelse"
-          rules="required|alpha"
+          name="description"
+          rules="required"
           v-slot="{ errors }"
         >
           <label for="description"
@@ -551,11 +332,7 @@
           <a href="#">villkår.</a></span
         >
 
-        <ValidationProvider
-          name="villkår"
-          rules="required"
-          v-slot="{ errors }"
-        >
+        <ValidationProvider name="villkår" rules="required" v-slot="{ errors }">
           <label class="padding-left" for="terms"
             >Jeg har forstått deres villkår<span class="red"> *</span>
             <input
@@ -577,21 +354,21 @@
 </template>
 
 <script>
-import { extend } from 'vee-validate';
-import axios from "axios";
-import { mapActions } from "vuex";
 import Header from "../components/Header.vue";
+import axios from "axios";
+// import { extend } from "vee-validate";
+import { mapActions } from "vuex";
 
-extend("required", {
-  validate: value => value === 'example',
-  message: (field) => "Vennligst fyll inn " + `${field}`
-});
+
+// extend("required", {
+//   validate: (value) => value === "example",
+//   message: (field) => "Vennligst fyll inn " + `${field}`,
+// });
 
 export default {
   name: "AddVenuePage",
   components: {
     "my-header": Header,
-    
   },
   data() {
     return {
@@ -615,48 +392,34 @@ export default {
         features: [],
         terms: false,
       },
-      error: null
+      allVenueTypes: [],
+      allFeatures: [],
+      error: null,
     };
   },
+  async mounted() {
+    const venueTypeResponse =  await axios.get("/venue-types");
+    this.allVenueTypes = venueTypeResponse.data;
+
+    const featuresReponse = await axios.get("/features");
+    this.allFeatures = featuresReponse.data;
+  },
   methods: {
+   ...mapActions(["Register"]),
     onSubmit() {
       console.log(this.form);
     },
-      async mounted() {
-        try {
-          axios.get("http://localhost:1337/venues").then(response => {
-            console.log(response);
-            this.venues = response.data;
-          });
-        } catch (error) {
-          this.error = error;
-      }
+    processFile(e) {
+      this.form.gallery = e.target.files;
     },
-    ...mapActions(["Register"]),
     async handleSubmit() {
-       try {
+      try {
         await this.Register(this.form);
-        this.$router.push("/change-venue");
-        this.error = false
+        this.$router.push("/edit");
+        this.error = false;
       } catch (error) {
-        this.error = true
+        this.error = true;
       }
-    },
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length)
-        return;
-      this.createImage(files[0]);
-    },
-    createImage(file) {
-      var gallery = new gallery();
-      var reader = new FileReader();
-      var vm = this;
-
-      reader.onload = (e) => {
-        vm.gallery = e.target.result;
-      };
-      reader.readAsDataURL(file);
     },
   },
 };
